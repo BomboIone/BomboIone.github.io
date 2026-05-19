@@ -128,6 +128,11 @@
       <span>IIS "Marconi Pieralisi" — Jesi</span>
     </footer>
   </div>
-  <script src="script.js"></script>
+  <script>
+    const btn = document.getElementById("hamburger");
+    const menu = document.getElementById("nav-links");
+    btn.addEventListener("click", () => { btn.classList.toggle("open"); menu.classList.toggle("open"); });
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); menu.classList.remove("open"); }));
+  </script>
 </body>
 </html>
