@@ -131,7 +131,8 @@
 <body>
   <nav>
     <a class="nav-logo" href="index.html">PM</a>
-    <ul class="nav-links">
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="materie.html">Materie</a></li>
       <li><a href="edcivica.html">Ed. Civica</a></li>
@@ -163,7 +164,7 @@
       <div class="chi-grid">
         <div class="chi-text">
           <p>Ciao, sono Pietro Morri. Frequento il quinto anno dell'IIS Marconi Pieralisi di Jesi nell'indirizzo Informatica e Telecomunicazioni.</p>
-          <p>Sono il tipo di persona che deve capire come funziona tutto — non mi basta che qualcosa funzioni, voglio sapere perché. E cerco sempre di portare qualcosa di mio in quello che faccio, invece di fare le cose come le fa chiunque altro </p>
+          <p>Mi piace capire come funzionano le cose — che si tratti di un algoritmo, di una rete o di un personaggio di un anime. Sono curioso per natura e tendo a buttarmi a capofitto in quello che mi interessa.</p>
           <p>Fuori dalla scuola passo il mio tempo in palestra, davanti a qualche videogioco o a guardare anime. Sono le tre cose che mi tengono in equilibrio.</p>
         </div>
         <div class="chi-info">
@@ -238,5 +239,11 @@
     </footer>
 
   </div>
+  <script>
+    const btn = document.getElementById("hamburger");
+    const menu = document.getElementById("nav-links");
+    btn.addEventListener("click", () => { btn.classList.toggle("open"); menu.classList.toggle("open"); });
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); menu.classList.remove("open"); }));
+  </script>
 </body>
 </html>
