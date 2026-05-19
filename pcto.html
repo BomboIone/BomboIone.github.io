@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pietro Morri — PCTO</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-inner {
+      padding: 5rem 3rem;
+      max-width: 820px;
+    }
+    .page-inner p {
+      color: var(--text);
+      font-size: .95rem;
+      margin-bottom: 1.2rem;
+    }
+    .page-inner h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--amber-light);
+      margin: 2.5rem 0 .8rem;
+    }
+
+    /* Scheda azienda */
+    .azienda-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--amber);
+      padding: 2rem;
+      margin: 2rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2rem;
+    }
+    .azienda-row { display: flex; flex-direction: column; gap: .3rem; }
+    .azienda-key {
+      font-family: var(--font-mono); font-size: .68rem;
+      color: var(--text-dim); letter-spacing: .15em; text-transform: uppercase;
+    }
+    .azienda-val { color: var(--cream); font-size: .9rem; }
+
+    /* Competenze */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .comp-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+    }
+    .comp-block h4 {
+      font-family: var(--font-mono); font-size: .72rem;
+      color: var(--amber); letter-spacing: .15em;
+      text-transform: uppercase; margin-bottom: 1.2rem;
+    }
+    .comp-block ul { list-style: none; }
+    .comp-block li {
+      font-size: .88rem; color: var(--text);
+      padding: .45rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .comp-block li:last-child { border-bottom: none; }
+    .comp-block li::before { content: '→ '; color: var(--amber); font-family: var(--font-mono); }
+
+    @media (max-width: 768px) {
+      .page-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .azienda-card { grid-template-columns: 1fr; }
+      .comp-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">PM</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="materie.html">Materie</a></li>
+      <li><a href="edcivica.html">Ed. Civica</a></li>
+      <li><a href="pcto.html" class="active">PCTO</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-content">
+    <div class="page-inner">
+
+      <div class="section-label">Percorso per le Competenze Trasversali e l'Orientamento</div>
+      <h1 class="section-title">PCTO</h1>
+
+      <p>Il PCTO è stata un'occasione concreta per mettere alla prova le competenze sviluppate a scuola in un contesto lavorativo reale, confrontandomi con dinamiche, ritmi e responsabilità molto diverse da quelle scolastiche.</p>
+
+      <div class="placeholder-box">
+        ⚠ DA PERSONALIZZARE<br><br>
+        Sostituisci questo blocco con i dati della tua vera esperienza:<br>
+        — Nome dell'azienda e sede<br>
+        — Periodo e durata (ore totali)<br>
+        — Ruolo svolto<br>
+        — Mansioni principali<br>
+        — Riflessione personale
+      </div>
+
+      <h3>Scheda dell'esperienza</h3>
+      <div class="azienda-card">
+        <div class="azienda-row">
+          <span class="azienda-key">Azienda</span>
+          <span class="azienda-val">Da aggiungere</span>
+        </div>
+        <div class="azienda-row">
+          <span class="azienda-key">Sede</span>
+          <span class="azienda-val">Da aggiungere</span>
+        </div>
+        <div class="azienda-row">
+          <span class="azienda-key">Periodo</span>
+          <span class="azienda-val">Da aggiungere</span>
+        </div>
+        <div class="azienda-row">
+          <span class="azienda-key">Ore totali</span>
+          <span class="azienda-val">Da aggiungere</span>
+        </div>
+        <div class="azienda-row">
+          <span class="azienda-key">Ruolo</span>
+          <span class="azienda-val">Da aggiungere</span>
+        </div>
+      </div>
+
+      <h3>Competenze acquisite</h3>
+      <div class="comp-grid">
+        <div class="comp-block">
+          <h4>Competenze tecniche</h4>
+          <ul>
+            <li>Da aggiungere</li>
+            <li>Da aggiungere</li>
+            <li>Da aggiungere</li>
+          </ul>
+        </div>
+        <div class="comp-block">
+          <h4>Competenze trasversali</h4>
+          <ul>
+            <li>Da aggiungere</li>
+            <li>Da aggiungere</li>
+            <li>Da aggiungere</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <span>Pietro Morri · 2025/2026</span>
+      <span>IIS "Marconi Pieralisi" — Jesi</span>
+    </footer>
+  </div>
+</body>
+</html>
