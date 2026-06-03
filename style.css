@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-  --bg: #0e0d0b;
-  --bg2: #161410;
-  --bg3: #1d1a15;
-  --surface: #252018;
-  --border: #2e2820;
-  --amber: #d4882a;
-  --amber-light: #e8a84a;
-  --amber-dim: #9a6120;
-  --rust: #b84c2a;
-  --cream: #e8dfc8;
-  --cream-dim: #a89e87;
-  --text: #d5cbb8;
-  --text-dim: #7a7060;
-  --white: #f0e8d8;
+  --bg: #0b0d12;
+  --bg2: #0f1219;
+  --bg3: #151a24;
+  --surface: #1b2030;
+  --border: #242d3e;
+  --amber: #7eafd4;
+  --amber-light: #a3c8e8;
+  --amber-dim: #3d6a8a;
+  --rust: #4a7fa8;
+  --cream: #dde6f0;
+  --cream-dim: #8a9db5;
+  --text: #c8d4e0;
+  --text-dim: #4e6070;
+  --white: #eaf1f8;
   --font-display: 'Playfair Display', Georgia, serif;
   --font-mono: 'DM Mono', monospace;
   --font-body: 'DM Sans', sans-serif;
@@ -47,7 +47,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.2rem 3rem;
-  background: rgba(14,13,11,.88);
+  background: rgba(11,13,18,.88);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -227,7 +227,7 @@ footer span {
     top: 61px; left: 0; right: 0;
     flex-direction: column;
     gap: 0;
-    background: rgba(14,13,11,.97);
+    background: rgba(11,13,18,.97);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: .5rem 0;
