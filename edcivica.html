@@ -6,99 +6,51 @@
   <title>Pietro Morri — Educazione Civica</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .page-header {
-      padding: 6rem 3rem 4rem;
-      background: var(--bg2);
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .page-header::after {
-      content: '';
-      position: absolute; bottom: -1px; left: 3rem; width: 80px; height: 2px;
-      background: var(--amber);
-    }
-
-    .page-body {
+    .page-inner {
       padding: 5rem 3rem;
-      max-width: 900px;
+      max-width: 820px;
     }
-    .page-body p {
+    .page-inner p {
       color: var(--text);
       font-size: .95rem;
-      margin-bottom: 1.4rem;
-      line-height: 1.85;
+      margin-bottom: 1.2rem;
     }
-    .page-body p:first-of-type {
+    .page-inner h3 {
       font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--cream);
-      font-style: italic;
-    }
-
-    /* ── SUBSECTION TITLE ── */
-    .sub-heading {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       color: var(--amber-light);
-      margin: 3.5rem 0 1.2rem;
-      font-weight: 700;
-      position: relative;
-      padding-left: 1.2rem;
+      margin: 2.5rem 0 .8rem;
     }
-    .sub-heading::before {
-      content: '';
-      position: absolute; left: 0; top: .2em; bottom: .2em;
-      width: 2px; background: var(--amber);
-    }
-
-    /* ── TEMI GRID ── */
     .temi-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: 2rem;
-      background: var(--border);
-      border: 1px solid var(--border);
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
     .tema-card {
       background: var(--surface);
-      padding: 2rem 1.8rem;
-      position: relative;
-      overflow: hidden;
-      transition: background .3s;
+      border: 1px solid var(--border);
+      padding: 1.4rem 1.5rem;
+      transition: border-color .25s, transform .25s;
     }
-    .tema-card:hover { background: var(--surface2); }
-    .tema-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: linear-gradient(90deg, var(--amber), transparent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .4s var(--ease-out);
-    }
-    .tema-card:hover::after { transform: scaleX(1); }
-    .tema-num {
-      font-family: var(--font-mono); font-size: .65rem;
-      color: var(--text-dim); letter-spacing: .14em;
-      margin-bottom: .8rem;
-    }
-    .tema-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+    .tema-card:hover { border-color: var(--amber-dim); transform: translateY(-3px); }
+    .tema-icon { font-size: 1.5rem; margin-bottom: .6rem; }
     .tema-title {
       font-family: var(--font-display);
-      font-size: 1.1rem; color: var(--white);
-      margin-bottom: .6rem; font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: .4rem;
     }
-    .tema-desc { font-size: .84rem; color: var(--text-dim); line-height: 1.65; }
+    .tema-desc { font-size: .82rem; color: var(--text-dim); line-height: 1.55; }
 
     @media (max-width: 768px) {
-      .page-header { padding: 4rem 1.5rem 3rem; }
-      .page-body { padding: 3.5rem 1.5rem; }
+      .page-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
       .temi-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <nav id="nav">
+  <nav>
     <a class="nav-logo" href="index.html">PM</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
@@ -111,21 +63,18 @@
   </nav>
 
   <div class="page-content">
+    <div class="page-inner">
 
-    <div class="page-header">
-      <div class="section-label reveal">Percorso interdisciplinare</div>
-      <h1 class="section-title reveal reveal-delay-1" style="margin-bottom:0">Educazione Civica</h1>
-    </div>
+      <div class="section-label">Percorso interdisciplinare</div>
+      <h1 class="section-title">Educazione Civica</h1>
 
-    <div class="page-body">
+      <h3>Cittadinanza digitale: usare la rete con consapevolezza</h3>
 
-      <h2 class="sub-heading reveal">Cittadinanza digitale: usare la rete con consapevolezza</h2>
+      <p>Nel corso del quinto anno il percorso di Educazione Civica si è focalizzato sul tema della cittadinanza digitale, esplorando diritti e responsabilità di chi vive e lavora in rete.</p>
 
-      <p class="reveal reveal-delay-1">Nel corso del quinto anno il percorso di Educazione Civica si è focalizzato sul tema della cittadinanza digitale, esplorando diritti e responsabilità di chi vive e lavora in rete.</p>
+      <p>Il tema si intreccia direttamente con il percorso tecnico dell'indirizzo Informatica: capire come funzionano le reti, la crittografia e i dati personali non è solo una competenza tecnica, ma anche una responsabilità civica.</p>
 
-      <p class="reveal reveal-delay-2">Il tema si intreccia direttamente con il percorso tecnico dell'indirizzo Informatica: capire come funzionano le reti, la crittografia e i dati personali non è solo una competenza tecnica, ma anche una responsabilità civica.</p>
-
-      <div class="placeholder-box reveal reveal-delay-3">
+      <div class="placeholder-box">
         ⚠ DA PERSONALIZZARE<br><br>
         Aggiungi qui il tuo percorso reale di Educazione Civica:<br>
         — Argomenti trattati nelle varie discipline<br>
@@ -133,24 +82,21 @@
         — Riflessione personale su cosa hai imparato
       </div>
 
-      <h2 class="sub-heading reveal">Temi esplorati</h2>
+      <h3>Temi esplorati</h3>
 
       <div class="temi-grid">
-        <div class="tema-card reveal reveal-delay-1">
-          <div class="tema-num">01</div>
-          <span class="tema-icon">🔐</span>
+        <div class="tema-card">
+          <div class="tema-icon">🔐</div>
           <div class="tema-title">Privacy e dati personali</div>
           <p class="tema-desc">Come vengono raccolti e usati i nostri dati in rete, e come proteggerli.</p>
         </div>
-        <div class="tema-card reveal reveal-delay-2">
-          <div class="tema-num">02</div>
-          <span class="tema-icon">📰</span>
+        <div class="tema-card">
+          <div class="tema-icon">📰</div>
           <div class="tema-title">Fake news</div>
           <p class="tema-desc">Come riconoscere informazioni false e sviluppare un pensiero critico nei confronti dei media digitali.</p>
         </div>
-        <div class="tema-card reveal reveal-delay-3">
-          <div class="tema-num">03</div>
-          <span class="tema-icon">🧠</span>
+        <div class="tema-card">
+          <div class="tema-icon">🧠</div>
           <div class="tema-title">Propaganda</div>
           <p class="tema-desc">I pericoli della propaganda e come riconoscerla e contrastarla in modo critico e consapevole.</p>
         </div>
@@ -160,22 +106,14 @@
 
     <footer>
       <span>Pietro Morri · 2025/2026</span>
-      <div class="footer-center">PM</div>
       <span>IIS "Marconi Pieralisi" — Jesi</span>
     </footer>
   </div>
-
   <script>
-    const navEl = document.getElementById('nav');
-    window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
     const btn = document.getElementById("hamburger");
     const menu = document.getElementById("nav-links");
     btn.addEventListener("click", () => { btn.classList.toggle("open"); menu.classList.toggle("open"); });
     menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); menu.classList.remove("open"); }));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 </body>
 </html>

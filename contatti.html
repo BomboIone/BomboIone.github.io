@@ -6,127 +6,38 @@
   <title>Pietro Morri — Contatti</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .page-header {
-      padding: 6rem 3rem 4rem;
-      background: var(--bg2);
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .page-header::after {
-      content: '';
-      position: absolute; bottom: -1px; left: 3rem; width: 80px; height: 2px;
-      background: var(--amber);
-    }
-
-    .page-body { padding: 5rem 3rem; max-width: 820px; }
-
-    .contact-intro {
-      font-family: var(--font-display);
-      font-size: 1.1rem; color: var(--cream);
-      font-style: italic;
-      margin-bottom: 3rem; line-height: 1.7;
-    }
-
-    /* ── CONTACTS GRID ── */
-    .contatti-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-bottom: 3rem;
-    }
+    .page-inner { padding: 5rem 3rem; max-width: 680px; }
+    .page-inner p { color: var(--text); font-size: .95rem; margin-bottom: 2rem; }
+    .contatti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .contatto-card {
-      background: var(--surface);
-      padding: 1.8rem 2rem;
-      display: flex; flex-direction: column; gap: .4rem;
-      position: relative; overflow: hidden;
-      transition: background .3s;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1.6rem 1.8rem; display: flex; flex-direction: column; gap: .5rem;
+      transition: border-color .25s, transform .25s;
     }
-    .contatto-card:hover { background: var(--surface2); }
-    .contatto-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px; background: linear-gradient(90deg, var(--amber), transparent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .4s var(--ease-out);
-    }
-    .contatto-card:hover::before { transform: scaleX(1); }
-    .contatto-icon { font-size: 1.5rem; margin-bottom: .5rem; }
-    .contatto-key {
-      font-family: var(--font-mono); font-size: .66rem;
-      color: var(--text-dim); letter-spacing: .16em; text-transform: uppercase;
-    }
+    .contatto-card:hover { border-color: var(--amber-dim); transform: translateY(-3px); }
+    .contatto-icon { font-size: 1.4rem; margin-bottom: .2rem; }
+    .contatto-key { font-family: var(--font-mono); font-size: .68rem; color: var(--text-dim); letter-spacing: .15em; text-transform: uppercase; }
     .contatto-val { color: var(--cream); font-size: .92rem; word-break: break-all; }
     .contatto-val a { color: var(--amber); text-decoration: none; }
     .contatto-val a:hover { text-decoration: underline; }
-
-    /* ── DIVIDER ── */
-    .deco-separator {
-      display: flex; align-items: center; gap: 1.5rem;
-      margin: 3rem 0;
-    }
-    .deco-separator::before,
-    .deco-separator::after {
-      content: '';
-      flex: 1; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border));
-    }
-    .deco-separator::before { background: linear-gradient(90deg, var(--border), transparent); }
-    .deco-separator span {
-      font-family: var(--font-mono); font-size: .65rem;
-      color: var(--text-dim); letter-spacing: .2em; text-transform: uppercase;
-    }
-
-    /* ── GITHUB CTA ── */
+    .divider { width: 60px; height: 1px; background: var(--amber-dim); margin: 3rem 0; }
     .github-cta {
-      display: inline-flex; align-items: center; gap: 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.4rem 2rem;
-      color: var(--cream);
-      text-decoration: none;
-      font-family: var(--font-mono); font-size: .82rem;
-      letter-spacing: .08em;
-      transition: border-color .3s, color .3s, background .3s, transform .3s var(--ease-out), box-shadow .3s;
-      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1.2rem 1.8rem; color: var(--cream);
+      text-decoration: none; font-family: var(--font-mono); font-size: .85rem;
+      transition: border-color .25s, color .25s;
     }
-    .github-cta::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: var(--amber-glow);
-      opacity: 0; transition: opacity .3s;
-    }
-    .github-cta:hover {
-      border-color: var(--amber);
-      color: var(--amber);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.4);
-    }
-    .github-cta:hover::before { opacity: 1; }
-    .github-cta svg {
-      width: 22px; height: 22px;
-      fill: currentColor; flex-shrink: 0;
-      position: relative;
-    }
-    .github-cta-text { position: relative; }
-    .github-cta-sub {
-      display: block;
-      font-size: .68rem; color: var(--text-dim);
-      margin-top: .1rem; letter-spacing: .12em;
-    }
-    .github-cta:hover .github-cta-sub { color: var(--amber-dim); }
-
+    .github-cta:hover { border-color: var(--amber); color: var(--amber); }
+    .github-cta svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
     @media (max-width: 768px) {
-      .page-header { padding: 4rem 1.5rem 3rem; }
-      .page-body { padding: 3.5rem 1.5rem; }
+      .page-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
       .contatti-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <nav id="nav">
+  <nav>
     <a class="nav-logo" href="index.html">PM</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
@@ -139,71 +50,53 @@
   </nav>
 
   <div class="page-content">
-
-    <div class="page-header">
-      <div class="section-label reveal">Trovami qui</div>
-      <h1 class="section-title reveal reveal-delay-1" style="margin-bottom:0">Contatti</h1>
-    </div>
-
-    <div class="page-body">
-
-      <p class="contact-intro reveal">Puoi contattarmi via email o trovare i miei progetti su GitHub.</p>
+    <div class="page-inner">
+      <div class="section-label">Trovami qui</div>
+      <h1 class="section-title">Contatti</h1>
+      <p>Puoi contattarmi via email o trovare i miei progetti su GitHub.</p>
 
       <div class="contatti-grid">
-        <div class="contatto-card reveal reveal-delay-1">
+        <div class="contatto-card">
           <div class="contatto-icon">✉️</div>
           <span class="contatto-key">Email</span>
           <span class="contatto-val"><a href="mailto:morripietro041@gmail.com">morripietro041@gmail.com</a></span>
         </div>
-        <div class="contatto-card reveal reveal-delay-2">
+        <div class="contatto-card">
           <div class="contatto-icon">📱</div>
           <span class="contatto-key">Telefono</span>
           <span class="contatto-val">+39 370 373 4733</span>
         </div>
-        <div class="contatto-card reveal reveal-delay-3">
+        <div class="contatto-card">
           <div class="contatto-icon">📍</div>
           <span class="contatto-key">Residenza</span>
           <span class="contatto-val">Jesi (AN)</span>
         </div>
-        <div class="contatto-card reveal reveal-delay-4">
+        <div class="contatto-card">
           <div class="contatto-icon">🎓</div>
           <span class="contatto-key">Scuola</span>
           <span class="contatto-val">IIS "Marconi Pieralisi", Jesi</span>
         </div>
       </div>
 
-      <div class="deco-separator reveal">
-        <span>Progetti</span>
-      </div>
+      <div class="divider"></div>
 
-      <a href="https://github.com/BomboIone" target="_blank" class="github-cta reveal reveal-delay-1">
+      <a href="https://github.com/BomboIone" target="_blank" class="github-cta">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .319.216.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        <span class="github-cta-text">
-          github.com/BomboIone
-          <span class="github-cta-sub">Visualizza i miei progetti →</span>
-        </span>
+        github.com/BomboIone
       </a>
-
     </div>
 
     <footer>
       <span>Pietro Morri · 2025/2026</span>
-      <div class="footer-center">PM</div>
       <span>IIS "Marconi Pieralisi" — Jesi</span>
     </footer>
   </div>
 
   <script>
-    const navEl = document.getElementById('nav');
-    window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
     const btn = document.getElementById("hamburger");
     const menu = document.getElementById("nav-links");
     btn.addEventListener("click", () => { btn.classList.toggle("open"); menu.classList.toggle("open"); });
     menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); menu.classList.remove("open"); }));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 </body>
 </html>

@@ -6,220 +6,131 @@
   <title>Pietro Morri — Home</title>
   <link rel="stylesheet" href="style.css">
   <style>
-
-    /* ══ HERO ══════════════════════════════ */
+    /* ── HERO ── */
     .hero {
-      min-height: calc(100vh - 64px);
-      display: grid;
-      grid-template-rows: 1fr auto;
-      padding: 0 3rem 4rem;
+      min-height: calc(100vh - 70px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 3rem 4rem;
       position: relative;
       overflow: hidden;
     }
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 55% 60% at 75% 35%, rgba(196,154,60,.07) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 50% at 15% 75%, rgba(100,130,180,.04) 0%, transparent 60%);
-      pointer-events: none;
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(212,136,42,.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 70%, rgba(184,76,42,.05) 0%, transparent 60%);
     }
-    /* big decorative number */
-    .hero-deco-num {
-      position: absolute;
-      right: 3rem; top: 50%;
-      transform: translateY(-55%);
-      font-family: var(--font-display);
-      font-size: clamp(14rem, 22vw, 22rem);
-      font-weight: 900;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(196,154,60,.07);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-      animation: fadeUp 1.2s 1s both;
-    }
-
-    .hero-inner {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-      padding-top: 5rem;
-    }
-    .hero-eyebrow {
+    .hero-tag {
       font-family: var(--font-mono);
-      font-size: .72rem;
+      font-size: .75rem;
       color: var(--amber);
-      letter-spacing: .25em;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      margin-bottom: 2rem;
-      display: flex; align-items: center; gap: .8rem;
-      opacity: 0; animation: fadeUp .8s .15s forwards;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block; width: 32px; height: 1px;
-      background: var(--amber);
-      animation: lineGrow .6s .15s both;
-      transform-origin: left;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp .8s .2s forwards;
     }
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(4rem, 10vw, 9rem);
-      line-height: .95;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      line-height: 1.0;
       color: var(--white);
       font-weight: 900;
-      margin-bottom: 1rem;
-      opacity: 0; animation: fadeUp .9s .3s forwards;
+      margin-bottom: .5rem;
+      opacity: 0;
+      animation: fadeUp .8s .35s forwards;
     }
-    .hero-title em {
-      font-style: italic;
-      color: var(--amber);
-      display: block;
-    }
+    .hero-title em { font-style: italic; color: var(--amber); }
     .hero-sub {
       font-family: var(--font-display);
-      font-size: clamp(1rem, 2.2vw, 1.4rem);
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
       color: var(--cream-dim);
       font-style: italic;
-      margin-bottom: 1.8rem;
-      opacity: 0; animation: fadeUp .8s .48s forwards;
-      max-width: 480px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp .8s .5s forwards;
     }
     .hero-desc {
-      max-width: 420px;
-      font-size: .9rem;
+      max-width: 520px;
+      font-size: .95rem;
       color: var(--text-dim);
       margin-bottom: 3rem;
-      line-height: 1.8;
-      opacity: 0; animation: fadeUp .8s .6s forwards;
+      opacity: 0;
+      animation: fadeUp .8s .65s forwards;
     }
     .hero-cta {
       display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp .8s .75s forwards;
+      opacity: 0;
+      animation: fadeUp .8s .8s forwards;
     }
-
-    /* bottom strip */
-    .hero-strip {
-      position: relative; z-index: 1;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid var(--border);
-      padding-top: 1.5rem;
+    .hero-line {
+      position: absolute; bottom: 3rem; left: 3rem;
+      font-family: var(--font-mono); font-size: .7rem;
+      color: var(--text-dim); letter-spacing: .15em;
       opacity: 0; animation: fadeUp .8s 1s forwards;
     }
-    .hero-strip-item {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      color: var(--text-dim);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-    .hero-strip-item strong {
-      display: block;
-      color: var(--cream);
-      font-size: .82rem;
-      letter-spacing: .06em;
-      margin-top: .2rem;
-    }
-    .hero-strip-divider { width: 1px; height: 32px; background: var(--border); }
 
-    /* ══ CHI SONO ══════════════════════════ */
+    /* ── CHI SONO ── */
     .chi-sono {
-      padding: 8rem 3rem;
+      padding: 7rem 3rem;
       background: var(--bg2);
       border-top: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .chi-sono::before {
-      content: '';
-      position: absolute; top: -1px; left: 3rem; width: 80px; height: 2px;
-      background: linear-gradient(90deg, var(--amber), transparent);
     }
     .chi-grid {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: start;
-      max-width: 980px;
+      max-width: 900px;
     }
-    .chi-text-block { position: relative; }
-    .chi-text-block p {
-      color: var(--text);
-      margin-bottom: 1.4rem;
-      font-size: .95rem;
-      line-height: 1.85;
-    }
-    .chi-text-block p:first-of-type {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--cream);
-      font-style: italic;
-      line-height: 1.7;
-    }
-    .chi-info { display: flex; flex-direction: column; gap: 0; }
+    .chi-text p { color: var(--text); margin-bottom: 1.2rem; font-size: .95rem; }
+    .chi-info { display: flex; flex-direction: column; gap: 1rem; }
 
-    /* ══ PASSIONI ═══════════════════════════ */
+    /* ── PASSIONI ── */
     .passioni {
-      padding: 8rem 3rem;
+      padding: 7rem 3rem;
       border-top: 1px solid var(--border);
-      position: relative;
     }
     .passioni-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: 3.5rem;
-      max-width: 980px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      max-width: 900px;
     }
     .passione-card {
       background: var(--surface);
-      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      padding: 2rem 1.8rem;
       position: relative;
       overflow: hidden;
-      transition: background .3s;
+      transition: border-color .3s, transform .3s;
     }
-    .passione-card:hover { background: var(--surface2); }
-    .passione-card::after {
+    .passione-card:hover { border-color: var(--amber-dim); transform: translateY(-4px); }
+    .passione-card::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--amber), transparent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .4s var(--ease-out);
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,136,42,.06) 0%, transparent 70%);
     }
-    .passione-card:hover::after { transform: scaleX(1); }
-    .passione-num {
-      font-family: var(--font-mono);
-      font-size: .65rem;
-      color: var(--text-dim);
-      letter-spacing: .15em;
-      margin-bottom: 1.2rem;
-    }
-    .passione-icon { font-size: 2.2rem; margin-bottom: 1.2rem; display: block; }
+    .passione-icon { font-size: 2rem; margin-bottom: 1rem; }
     .passione-name {
-      font-family: var(--font-display); font-size: 1.5rem;
-      color: var(--white); margin-bottom: .8rem;
-      font-weight: 700;
+      font-family: var(--font-display); font-size: 1.4rem;
+      color: var(--white); margin-bottom: .7rem;
     }
-    .passione-desc { font-size: .87rem; color: var(--text-dim); line-height: 1.7; }
+    .passione-desc { font-size: .88rem; color: var(--text-dim); line-height: 1.65; }
 
     @media (max-width: 768px) {
-      .hero { padding: 0 1.5rem 3rem; }
-      .hero-deco-num { display: none; }
-      .hero-strip { flex-wrap: wrap; gap: 1.2rem; }
-      .hero-strip-divider { display: none; }
-      .chi-sono, .passioni { padding: 5rem 1.5rem; }
-      .chi-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero, .chi-sono, .passioni { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .chi-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .passioni-grid { grid-template-columns: 1fr; }
+      .hero-line { position: static; margin-top: 2rem; }
     }
   </style>
 </head>
 <body>
-  <nav id="nav">
+  <nav>
     <a class="nav-logo" href="index.html">PM</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
@@ -236,105 +147,104 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-bg"></div>
-      <div class="hero-deco-num">5°</div>
-
-      <div class="hero-inner">
-        <div class="hero-eyebrow">IIS "Marconi Pieralisi" — Jesi · 2025/2026</div>
-        <h1 class="hero-title">Pietro<em>Morri</em></h1>
-        <p class="hero-sub">Studente di Informatica e Telecomunicazioni</p>
-        <p class="hero-desc">Cinque anni di scuola, le cose che mi appassionano, qualche progetto: ecco quello che ho da raccontare.</p>
-        <div class="hero-cta">
-          <a href="#chi-sono" class="btn btn-primary"><span>Scopri di più</span></a>
-          <a href="materie.html" class="btn btn-outline">Le mie materie →</a>
-        </div>
+      <div class="hero-tag">IIS "Marconi Pieralisi" — Jesi · 2025/2026</div>
+      <h1 class="hero-title">Pietro<br><em>Morri</em></h1>
+      <p class="hero-sub">Studente di Informatica e Telecomunicazioni</p>
+      <p class="hero-desc">Cinque anni di scuola, le cose che mi appassionano, qualche progetto: ecco quello che ho da raccontare.</p>
+      <div class="hero-cta">
+        <a href="#chi-sono" class="btn btn-primary">Scopri di più</a>
+        <a href="materie.html" class="btn btn-outline">Le mie materie</a>
       </div>
-
-      <div class="hero-strip">
-        <div class="hero-strip-item">Classe<strong>5ª CM</strong></div>
-        <div class="hero-strip-divider"></div>
-        <div class="hero-strip-item">Anno Scolastico<strong>2025 / 2026</strong></div>
-        <div class="hero-strip-divider"></div>
-        <div class="hero-strip-item">Indirizzo<strong>Informatica &amp; TLC</strong></div>
-        <div class="hero-strip-divider"></div>
-        <div class="hero-strip-item">Sede<strong>Jesi (AN)</strong></div>
-      </div>
+      <div class="hero-line">Classe 5ª CM · Anno scolastico 2025/2026</div>
     </section>
 
     <!-- CHI SONO -->
     <section class="chi-sono" id="chi-sono">
-      <div class="section-label reveal">Chi sono</div>
-      <h2 class="section-title reveal reveal-delay-1">Un po' di me</h2>
+      <div class="section-label">Chi sono</div>
+      <h2 class="section-title">Un po' di me</h2>
       <div class="chi-grid">
-        <div class="chi-text-block reveal reveal-delay-2">
+        <div class="chi-text">
           <p>Ciao, sono Pietro Morri. Frequento il quinto anno dell'IIS Marconi Pieralisi di Jesi nell'indirizzo Informatica e Telecomunicazioni.</p>
           <p>Mi piace capire come funzionano le cose — che si tratti di un algoritmo, di una rete o di un personaggio di un anime. Sono curioso per natura e tendo a buttarmi a capofitto in quello che mi interessa.</p>
           <p>Fuori dalla scuola passo il mio tempo in palestra, davanti a qualche videogioco o a guardare anime. Sono le tre cose che mi tengono in equilibrio.</p>
         </div>
-        <div class="chi-info reveal reveal-delay-3">
-          <div class="info-row"><span class="info-key">Nome</span><span class="info-val">Pietro Morri</span></div>
-          <div class="info-row"><span class="info-key">Età</span><span class="info-val">19 anni</span></div>
-          <div class="info-row"><span class="info-key">Residenza</span><span class="info-val">Jesi (AN)</span></div>
-          <div class="info-row"><span class="info-key">Scuola</span><span class="info-val">IIS "Marconi Pieralisi"</span></div>
-          <div class="info-row"><span class="info-key">Indirizzo</span><span class="info-val">Informatica e Telecomunicazioni</span></div>
-          <div class="info-row"><span class="info-key">Email</span><span class="info-val"><a href="mailto:morripietro041@gmail.com">morripietro041@gmail.com</a></span></div>
-          <div class="info-row"><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/BomboIone" target="_blank">github.com/BomboIone</a></span></div>
+        <div class="chi-info">
+          <div class="info-row">
+            <span class="info-key">Nome</span>
+            <span class="info-val">Pietro Morri</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Età</span>
+            <span class="info-val">19 anni</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Residenza</span>
+            <span class="info-val">Jesi (AN)</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Scuola</span>
+            <span class="info-val">IIS "Marconi Pieralisi"</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Indirizzo</span>
+            <span class="info-val">Informatica e Telecomunicazioni</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Email</span>
+            <span class="info-val"><a href="mailto:morripietro041@gmail.com">morripietro041@gmail.com</a></span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">GitHub</span>
+            <span class="info-val"><a href="https://github.com/BomboIone" target="_blank">github.com/BomboIone</a></span>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- PASSIONI -->
     <section class="passioni" id="passioni">
-      <div class="section-label reveal">Quello che mi piace</div>
-      <h2 class="section-title reveal reveal-delay-1">Le mie passioni</h2>
+      <div class="section-label">Quello che mi piace</div>
+      <h2 class="section-title">Le mie passioni</h2>
       <div class="passioni-grid">
-        <div class="passione-card reveal reveal-delay-2">
-          <div class="passione-num">01</div>
-          <span class="passione-icon">🏋️</span>
+
+        <div class="passione-card">
+          <div class="passione-icon">🏋️</div>
           <div class="passione-name">Palestra</div>
-          <p class="passione-desc">[Da personalizzare — racconta quando hai iniziato, cosa ti piace allenarsi, obiettivi raggiunti o che stai inseguendo.]</p>
+          <p class="passione-desc">
+            [Da personalizzare — racconta quando hai iniziato, cosa ti piace allenarsi, obiettivi raggiunti o che stai inseguendo.]
+          </p>
         </div>
-        <div class="passione-card reveal reveal-delay-3">
-          <div class="passione-num">02</div>
-          <span class="passione-icon">🎮</span>
+
+        <div class="passione-card">
+          <div class="passione-icon">🎮</div>
           <div class="passione-name">Videogiochi</div>
-          <p class="passione-desc">[Da personalizzare — generi preferiti, titoli che ami, cosa ti ha dato questa passione nel tempo.]</p>
+          <p class="passione-desc">
+            [Da personalizzare — generi preferiti, titoli che ami, cosa ti ha dato questa passione nel tempo.]
+          </p>
         </div>
-        <div class="passione-card reveal reveal-delay-4">
-          <div class="passione-num">03</div>
-          <span class="passione-icon">⛩️</span>
+
+        <div class="passione-card">
+          <div class="passione-icon">⛩️</div>
           <div class="passione-name">Anime</div>
-          <p class="passione-desc">[Da personalizzare — serie preferite, cosa ti affascina di questo medium, un titolo che ti ha colpito.]</p>
+          <p class="passione-desc">
+            [Da personalizzare — serie preferite, cosa ti affascina di questo medium, un titolo che ti ha colpito.]
+          </p>
         </div>
+
       </div>
     </section>
 
     <footer>
       <span>Pietro Morri · 2025/2026</span>
-      <div class="footer-center">PM</div>
       <span>IIS "Marconi Pieralisi" — Jesi</span>
     </footer>
 
   </div>
-
   <script>
-    // Nav scroll
-    const navEl = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      navEl.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-
-    // Hamburger
     const btn = document.getElementById("hamburger");
     const menu = document.getElementById("nav-links");
     btn.addEventListener("click", () => { btn.classList.toggle("open"); menu.classList.toggle("open"); });
     menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); menu.classList.remove("open"); }));
-
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
   </script>
 </body>
 </html>

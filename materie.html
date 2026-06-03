@@ -6,125 +6,57 @@
   <title>Pietro Morri — Materie</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ══ PAGE HEADER ══════════════════════ */
-    .page-header {
-      padding: 6rem 3rem 4rem;
-      background: var(--bg2);
+    .materie-header {
+      padding: 5rem 3rem 3rem;
       border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
+      background: var(--bg2);
     }
-    .page-header::after {
-      content: '';
-      position: absolute; bottom: -1px; left: 3rem; width: 80px; height: 2px;
-      background: var(--amber);
-    }
-    .page-header-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: end;
-      max-width: 980px;
-    }
-    .page-header-desc {
-      font-size: .92rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-      max-width: 360px;
-    }
-    .page-header-stat {
-      text-align: right;
-    }
-    .stat-big {
-      font-family: var(--font-display);
-      font-size: clamp(4rem, 8vw, 7rem);
-      font-weight: 900;
-      color: transparent;
-      -webkit-text-stroke: 1px var(--amber-dim);
-      line-height: 1;
-    }
-    .stat-label {
-      font-family: var(--font-mono);
-      font-size: .7rem;
-      color: var(--text-dim);
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      margin-top: .3rem;
-    }
+    .materie-body { padding: 3rem; }
 
-    /* ══ BODY ════════════════════════════ */
-    .materie-body { padding: 4rem 3rem 5rem; }
-
-    /* ══ AREA LABELS ════════════════════ */
-    .area-block { margin-bottom: 5rem; }
-    .area-header {
-      display: flex; align-items: center; gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-    .area-tag {
+    .area-label {
       font-family: var(--font-mono); font-size: .68rem;
-      color: var(--amber); letter-spacing: .22em;
+      color: var(--amber); letter-spacing: .2em;
       text-transform: uppercase;
-      white-space: nowrap;
+      margin-top: 3.5rem; margin-bottom: 2rem;
+      padding-bottom: .8rem;
+      border-bottom: 1px solid var(--border);
     }
-    .area-line {
-      flex: 1; height: 1px;
-      background: linear-gradient(90deg, var(--border2), transparent);
-    }
-    .area-count {
-      font-family: var(--font-mono); font-size: .68rem;
-      color: var(--text-dim); letter-spacing: .1em;
-    }
+    .area-label:first-child { margin-top: 0; }
 
-    /* ══ MATERIA CARDS ══════════════════ */
     .materie-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 1rem;
     }
+
     .materia-card {
       background: var(--surface);
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: background .3s, transform .4s var(--ease-out);
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+      transition: border-color .25s, background .25s, transform .25s;
     }
-    .materia-card:hover { background: var(--surface2); }
-    .materia-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0;
-      width: 2px; height: 0;
-      background: var(--amber);
-      transition: height .4s var(--ease-out);
-    }
-    .materia-card:hover::before { height: 100%; }
+    .materia-card:hover { border-color: var(--amber-dim); background: #2a2318; transform: translateY(-3px); }
 
     .materia-num {
-      font-family: var(--font-mono); font-size: .65rem;
-      color: var(--text-dim); letter-spacing: .14em;
-      margin-bottom: .6rem;
+      font-family: var(--font-mono); font-size: .68rem;
+      color: var(--text-dim); margin-bottom: .5rem;
     }
     .materia-name {
-      font-family: var(--font-display); font-size: 1.3rem;
-      color: var(--white); margin-bottom: .9rem;
-      font-weight: 700; line-height: 1.2;
+      font-family: var(--font-display); font-size: 1.25rem;
+      color: var(--white); margin-bottom: .8rem;
     }
-    .materia-desc { font-size: .85rem; color: var(--text-dim); line-height: 1.7; }
-    .materia-topics { margin-top: 1.2rem; }
+    .materia-desc { font-size: .85rem; color: var(--text-dim); line-height: 1.6; }
+    .materia-topics { margin-top: 1rem; }
 
     @media (max-width: 768px) {
-      .page-header { padding: 4rem 1.5rem 3rem; }
-      .page-header-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .page-header-stat { text-align: left; }
-      .materie-body { padding: 3rem 1.5rem 4rem; }
+      .materie-header, .materie-body { padding-left: 1.5rem; padding-right: 1.5rem; }
       .materie-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <nav id="nav">
+  <nav>
     <a class="nav-logo" href="index.html">PM</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
@@ -138,175 +70,139 @@
 
   <div class="page-content">
 
-    <div class="page-header">
-      <div class="section-label reveal">Percorso formativo</div>
-      <div class="page-header-grid">
-        <div>
-          <h1 class="section-title reveal reveal-delay-1" style="margin-bottom:.8rem">Materie del<br>5° Anno</h1>
-          <p class="page-header-desc reveal reveal-delay-2">Un anno intenso tra sviluppo web, reti, intelligenza artificiale e le materie umanistiche che completano il percorso.</p>
-        </div>
-        <div class="page-header-stat reveal reveal-delay-3">
-          <div class="stat-big">10</div>
-          <div class="stat-label">Materie totali</div>
-        </div>
-      </div>
+    <div class="materie-header">
+      <div class="section-label">Percorso formativo</div>
+      <h1 class="section-title" style="margin-bottom:0">Materie del 5° Anno</h1>
     </div>
 
     <div class="materie-body">
 
-      <!-- AREA SCIENTIFICA -->
-      <div class="area-block">
-        <div class="area-header reveal">
-          <span class="area-tag">Area Scientifica / Tecnica</span>
-          <div class="area-line"></div>
-          <span class="area-count">06 materie</span>
+      <div class="area-label">Area Scientifica / Tecnica</div>
+      <div class="materie-grid">
+
+        <div class="materia-card">
+          <div class="materia-num">01</div>
+          <div class="materia-name">Informatica</div>
+          <p class="materia-desc">La materia di indirizzo principale. Nel quinto anno ho lavorato su applicazioni web full-stack, basi di dati relazionali e un progetto reale con un ente esterno, usando Git e lavorando in team tra frontend e backend.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">Full-stack web</span>
+            <span class="materia-topic">Basi di dati</span>
+            <span class="materia-topic">Git</span>
+            <span class="materia-topic">Team work</span>
+          </div>
         </div>
-        <div class="materie-grid">
 
-          <div class="materia-card reveal reveal-delay-1">
-            <div class="materia-num">01</div>
-            <div class="materia-name">Informatica</div>
-            <p class="materia-desc">La materia di indirizzo principale. Nel quinto anno ho lavorato su applicazioni web full-stack, basi di dati relazionali e un progetto reale con un ente esterno, usando Git e lavorando in team tra frontend e backend.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">Full-stack web</span>
-              <span class="materia-topic">Basi di dati</span>
-              <span class="materia-topic">Git</span>
-              <span class="materia-topic">Team work</span>
-            </div>
+        <div class="materia-card">
+          <div class="materia-num">02</div>
+          <div class="materia-name">Sistemi e Reti</div>
+          <p class="materia-desc">L'infrastruttura del mondo digitale: dalle reti locali a Internet, passando per sicurezza informatica e virtualizzazione.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">Crittografia</span>
+            <span class="materia-topic">Certificati digitali</span>
+            <span class="materia-topic">HTTPS</span>
           </div>
-
-          <div class="materia-card reveal reveal-delay-2">
-            <div class="materia-num">02</div>
-            <div class="materia-name">Sistemi e Reti</div>
-            <p class="materia-desc">L'infrastruttura del mondo digitale: dalle reti locali a Internet, passando per sicurezza informatica e virtualizzazione.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">Crittografia</span>
-              <span class="materia-topic">Certificati digitali</span>
-              <span class="materia-topic">HTTPS</span>
-            </div>
-          </div>
-
-          <div class="materia-card reveal reveal-delay-3">
-            <div class="materia-num">03</div>
-            <div class="materia-name">TPSIT</div>
-            <p class="materia-desc">Tecnologie e Progettazione di Sistemi Informatici e di Telecomunicazione. Programmazione concorrente, sistemi distribuiti e protocolli di rete a livello applicativo.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">Android Studio</span>
-              <span class="materia-topic">Sistemi distribuiti</span>
-            </div>
-          </div>
-
-          <div class="materia-card reveal reveal-delay-1">
-            <div class="materia-num">04</div>
-            <div class="materia-name">GPOI</div>
-            <p class="materia-desc">Gestione Progetto e Organizzazione d'Impresa: come si organizza un progetto reale, si stima il lavoro e si gestisce un team in modo efficiente.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">D.Lgs. 81/08</span>
-              <span class="materia-topic">ISO 9001</span>
-              <span class="materia-topic">Project management</span>
-            </div>
-          </div>
-
-          <div class="materia-card reveal reveal-delay-2">
-            <div class="materia-num">05</div>
-            <div class="materia-name">Matematica</div>
-            <p class="materia-desc">Gli strumenti di ragionamento e di calcolo che servono a tutte le discipline tecniche del corso.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">Calcolo combinatorio</span>
-              <span class="materia-topic">Statistica</span>
-            </div>
-          </div>
-
-          <div class="materia-card reveal reveal-delay-3">
-            <div class="materia-num">06</div>
-            <div class="materia-name">Intelligenza Artificiale</div>
-            <p class="materia-desc">Materia di curvatura dell'IIS Marconi Pieralisi, che caratterizza in modo unico il nostro percorso rispetto ad altri istituti tecnici.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">Da personalizzare</span>
-            </div>
-          </div>
-
         </div>
+
+        <div class="materia-card">
+          <div class="materia-num">03</div>
+          <div class="materia-name">TPSIT</div>
+          <p class="materia-desc">Tecnologie e Progettazione di Sistemi Informatici e di Telecomunicazione. Programmazione concorrente, sistemi distribuiti e protocolli di rete a livello applicativo.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">Android Studio</span>
+            <span class="materia-topic">Sistemi distribuiti</span>
+          </div>
+        </div>
+
+        <div class="materia-card">
+          <div class="materia-num">04</div>
+          <div class="materia-name">GPOI</div>
+          <p class="materia-desc">Gestione Progetto e Organizzazione d'Impresa: come si organizza un progetto reale, si stima il lavoro e si gestisce un team in modo efficiente.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">D.Lgs. 81/08</span>
+            <span class="materia-topic">ISO 9001</span>
+            <span class="materia-topic">Project management</span>
+          </div>
+        </div>
+
+        <div class="materia-card">
+          <div class="materia-num">05</div>
+          <div class="materia-name">Matematica</div>
+          <p class="materia-desc">Gli strumenti di ragionamento e di calcolo che servono a tutte le discipline tecniche del corso.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">Calcolo combinatorio</span>
+            <span class="materia-topic">Statistica</span>
+          </div>
+        </div>
+
+        <div class="materia-card">
+          <div class="materia-num">06</div>
+          <div class="materia-name">Intelligenza Artificiale</div>
+          <p class="materia-desc">Materia di curvatura dell'IIS Marconi Pieralisi, che caratterizza in modo unico il nostro percorso rispetto ad altri istituti tecnici.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">Da personalizzare</span>
+          </div>
+        </div>
+
       </div>
 
-      <!-- AREA UMANISTICA -->
-      <div class="area-block">
-        <div class="area-header reveal">
-          <span class="area-tag">Area Umanistica</span>
-          <div class="area-line"></div>
-          <span class="area-count">03 materie</span>
+      <div class="area-label">Area Umanistica</div>
+      <div class="materie-grid">
+
+        <div class="materia-card">
+          <div class="materia-num">07</div>
+          <div class="materia-name">Italiano</div>
+          <p class="materia-desc">Letteratura e scrittura, per imparare a esprimere con chiarezza anche concetti complessi.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">Giuseppe Ungaretti</span>
+          </div>
         </div>
-        <div class="materie-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))">
 
-          <div class="materia-card reveal reveal-delay-1">
-            <div class="materia-num">07</div>
-            <div class="materia-name">Italiano</div>
-            <p class="materia-desc">Letteratura e scrittura, per imparare a esprimere con chiarezza anche concetti complessi.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">Giuseppe Ungaretti</span>
-            </div>
+        <div class="materia-card">
+          <div class="materia-num">08</div>
+          <div class="materia-name">Storia</div>
+          <p class="materia-desc">I grandi eventi del Novecento e il mondo che hanno contribuito a modellare.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">Guerra Fredda</span>
           </div>
-
-          <div class="materia-card reveal reveal-delay-2">
-            <div class="materia-num">08</div>
-            <div class="materia-name">Storia</div>
-            <p class="materia-desc">I grandi eventi del Novecento e il mondo che hanno contribuito a modellare.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">Guerra Fredda</span>
-            </div>
-          </div>
-
-          <div class="materia-card reveal reveal-delay-3">
-            <div class="materia-num">09</div>
-            <div class="materia-name">Inglese</div>
-            <p class="materia-desc">La lingua internazionale dell'informatica e delle telecomunicazioni, fondamentale per il settore.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">Da personalizzare</span>
-            </div>
-          </div>
-
         </div>
+
+        <div class="materia-card">
+          <div class="materia-num">09</div>
+          <div class="materia-name">Inglese</div>
+          <p class="materia-desc">La lingua internazionale dell'informatica e delle telecomunicazioni, fondamentale per il settore.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">Da personalizzare</span>
+          </div>
+        </div>
+
       </div>
 
-      <!-- ALTRO -->
-      <div class="area-block" style="margin-bottom:0">
-        <div class="area-header reveal">
-          <span class="area-tag">Altro</span>
-          <div class="area-line"></div>
-          <span class="area-count">01 materia</span>
-        </div>
-        <div class="materie-grid" style="max-width:360px">
-          <div class="materia-card reveal reveal-delay-1">
-            <div class="materia-num">10</div>
-            <div class="materia-name">Scienze Motorie</div>
-            <p class="materia-desc">Attività fisica e conoscenza del corpo umano.</p>
-            <div class="materia-topics">
-              <span class="materia-topic">Apparato cardiocircolatorio</span>
-            </div>
+      <div class="area-label">Altro</div>
+      <div class="materie-grid" style="max-width: 360px;">
+
+        <div class="materia-card">
+          <div class="materia-num">10</div>
+          <div class="materia-name">Scienze Motorie</div>
+          <p class="materia-desc">Attività fisica e conoscenza del corpo umano.</p>
+          <div class="materia-topics">
+            <span class="materia-topic">Apparato cardiocircolatorio</span>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
 
     <footer>
       <span>Pietro Morri · 2025/2026</span>
-      <div class="footer-center">PM</div>
       <span>IIS "Marconi Pieralisi" — Jesi</span>
     </footer>
-  </div>
 
+  </div>
   <script>
-    const navEl = document.getElementById('nav');
-    window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
     const btn = document.getElementById("hamburger");
     const menu = document.getElementById("nav-links");
     btn.addEventListener("click", () => { btn.classList.toggle("open"); menu.classList.toggle("open"); });
     menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); menu.classList.remove("open"); }));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 </body>
 </html>
