@@ -1,26 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap');
 
 :root {
-  --bg:          #0e0d0b;
-  --bg2:         #161410;
-  --bg3:         #1d1a15;
-  --surface:     #252018;
-  --surface2:    #2c2619;
-  --border:      #2e2820;
-  --border2:     #3a3228;
-  --amber:       #d4882a;
-  --amber-light: #e8a84a;
-  --amber-dim:   #9a6120;
-  --amber-glow:  rgba(212,136,42,.15);
-  --rust:        #b84c2a;
-  --cream:       #e8dfc8;
-  --cream-dim:   #a89e87;
-  --text:        #d5cbb8;
-  --text-dim:    #7a7060;
-  --white:       #f0e8d8;
-  --font-display:'Playfair Display', Georgia, serif;
-  --font-mono:   'DM Mono', monospace;
-  --font-body:   'DM Sans', sans-serif;
+  --bg:          #0b0d0f;
+  --bg2:         #111418;
+  --bg3:         #171c22;
+  --surface:     #1c2028;
+  --surface2:    #222730;
+  --border:      #262d38;
+  --border2:     #323b48;
+  --amber:       #c49a3c;
+  --amber-light: #d9b55a;
+  --amber-dim:   #856928;
+  --amber-glow:  rgba(196,154,60,.13);
+  --rust:        #8c6a3a;
+  --cream:       #dde3ec;
+  --cream-dim:   #8e97a8;
+  --text:        #c8d0dc;
+  --text-dim:    #5a6478;
+  --white:       #eaf0f8;
+  --font-display:'Cormorant Garamond', Georgia, serif;
+  --font-mono:   'JetBrains Mono', monospace;
+  --font-body:   'Outfit', sans-serif;
   --ease-out:    cubic-bezier(.22, 1, .36, 1);
 }
 
