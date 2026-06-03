@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pietro Morri — Passioni</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .passioni-header {
+      padding: 5rem 3rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .passioni-body {
+      padding: 4rem 3rem;
+      max-width: 960px;
+    }
+
+    /* Card principale grande */
+    .passione-feature {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      transition: border-color .3s, transform .3s;
+      overflow: hidden;
+    }
+    .passione-feature:hover {
+      border-color: var(--amber-dim);
+      transform: translateY(-3px);
+    }
+
+    .passione-feature-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      background: var(--bg3);
+      border-right: 1px solid var(--border);
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+    .passione-feature-icon::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(212,136,42,.07) 0%, transparent 70%);
+    }
+
+    .passione-feature-body {
+      padding: 2rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .passione-feature-num {
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      color: var(--text-dim);
+      letter-spacing: .15em;
+      margin-bottom: .5rem;
+    }
+    .passione-feature-name {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      color: var(--white);
+      margin-bottom: .9rem;
+    }
+    .passione-feature-desc {
+      font-size: .9rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .passione-feature-tags {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .passione-tag {
+      display: inline-block;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--cream-dim);
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      padding: .22rem .6rem;
+      letter-spacing: .06em;
+    }
+
+    @media (max-width: 768px) {
+      .passioni-header, .passioni-body { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .passione-feature { grid-template-columns: 1fr; }
+      .passione-feature-icon { min-height: 100px; border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">PM</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="materie.html">Materie</a></li>
+      <li><a href="passioni.html" class="active">Passioni</a></li>
+      <li><a href="edcivica.html">Ed. Civica</a></li>
+      <li><a href="pcto.html">FSL</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-content">
+
+    <div class="passioni-header">
+      <div class="section-label">Quello che mi piace</div>
+      <h1 class="section-title" style="margin-bottom:0">Le mie passioni</h1>
+    </div>
+
+    <div class="passioni-body">
+
+      <div class="passione-feature fade-in" style="animation-delay:.1s">
+        <div class="passione-feature-icon">🏋️</div>
+        <div class="passione-feature-body">
+          <div class="passione-feature-num">01</div>
+          <div class="passione-feature-name">Palestra</div>
+          <p class="passione-feature-desc">
+            [Da personalizzare — racconta quando hai iniziato, cosa ti piace allenarsi, obiettivi raggiunti o che stai inseguendo.]
+          </p>
+          <div class="passione-feature-tags">
+            <span class="passione-tag">Da personalizzare</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="passione-feature fade-in" style="animation-delay:.22s">
+        <div class="passione-feature-icon">🎮</div>
+        <div class="passione-feature-body">
+          <div class="passione-feature-num">02</div>
+          <div class="passione-feature-name">Videogiochi</div>
+          <p class="passione-feature-desc">
+            [Da personalizzare — generi preferiti, titoli che ami, cosa ti ha dato questa passione nel tempo.]
+          </p>
+          <div class="passione-feature-tags">
+            <span class="passione-tag">Da personalizzare</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="passione-feature fade-in" style="animation-delay:.34s">
+        <div class="passione-feature-icon">⛩️</div>
+        <div class="passione-feature-body">
+          <div class="passione-feature-num">03</div>
+          <div class="passione-feature-name">Anime</div>
+          <p class="passione-feature-desc">
+            [Da personalizzare — serie preferite, cosa ti affascina di questo medium, un titolo che ti ha colpito.]
+          </p>
+          <div class="passione-feature-tags">
+            <span class="passione-tag">Da personalizzare</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <span>Pietro Morri · 2025/2026</span>
+      <span>IIS "Marconi Pieralisi" — Jesi</span>
+    </footer>
+  </div>
+
+  <script>
+    const btn = document.getElementById("hamburger");
+    const menu = document.getElementById("nav-links");
+    btn.addEventListener("click", () => { btn.classList.toggle("open"); menu.classList.toggle("open"); });
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); menu.classList.remove("open"); }));
+  </script>
+</body>
+</html>
