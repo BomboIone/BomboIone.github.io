@@ -7,71 +7,71 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .page-header {
-      padding: 6rem 3rem 3.5rem;
+      padding: 7rem 3rem 4rem;
       border-bottom: 1px solid var(--border);
-      position: relative; overflow: hidden;
+      position: relative; text-align: center;
     }
     .page-header::after {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--neon-dim), transparent);
+      position: absolute; bottom: -1px; left: 15%; right: 15%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--mist-far), transparent);
     }
 
     .page-body {
       display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 0;
+      grid-template-columns: 1fr 300px;
     }
 
     .page-main {
-      padding: 4rem 3rem;
+      padding: 5rem 4rem 5rem 3rem;
       border-right: 1px solid var(--border);
     }
     .page-main p {
-      color: var(--text); font-size: .92rem;
-      margin-bottom: 1.3rem; line-height: 1.9;
+      color: var(--text); font-size: .98rem;
+      margin-bottom: 1.5rem; line-height: 2; font-style: italic;
     }
     .page-main h3 {
       font-family: var(--font-display);
-      font-size: 1.3rem; font-weight: 700;
-      color: var(--fog); margin: 3rem 0 1rem;
-      padding-left: 1rem;
-      border-left: 2px solid var(--neon-dim);
+      font-size: 1.6rem; font-weight: 300; font-style: italic;
+      color: var(--mist-dim); margin: 3.5rem 0 1.2rem;
     }
 
-    /* sidebar */
-    .page-sidebar { padding: 4rem 2rem; }
-    .sidebar-block {
-      margin-bottom: 2.5rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .sidebar-block:last-child { border-bottom: none; }
+    .page-sidebar { padding: 5rem 2.5rem; }
+
+    .sidebar-section { margin-bottom: 3rem; }
     .sidebar-label {
-      font-family: var(--font-mono); font-size: .6rem;
-      color: var(--neon-dim); letter-spacing: .22em;
-      text-transform: uppercase; margin-bottom: 1rem;
+      font-family: var(--font-mono); font-size: .54rem;
+      color: var(--mist-far); letter-spacing: .28em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
     }
 
     .tema-item {
-      display: flex; gap: .8rem; align-items: flex-start;
-      padding: .9rem 0;
+      padding: 1.1rem 0;
       border-bottom: 1px solid var(--border);
+      transition: opacity .4s;
     }
     .tema-item:last-child { border-bottom: none; }
-    .tema-item-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .1rem; }
+    .tema-item:hover { opacity: .8; }
+    .tema-item-icon { font-size: 1rem; margin-bottom: .4rem; }
     .tema-item-title {
       font-family: var(--font-display);
-      font-size: .95rem; font-weight: 700;
-      color: var(--fog); margin-bottom: .25rem;
+      font-size: .95rem; font-style: italic; font-weight: 400;
+      color: var(--mist-dim); margin-bottom: .3rem;
     }
     .tema-item-desc {
-      font-size: .78rem; color: var(--text-dim); line-height: 1.55;
+      font-size: .78rem; color: var(--text-dim);
+      line-height: 1.6; font-style: italic;
+    }
+
+    .sidebar-meta {
+      font-family: var(--font-mono); font-size: .6rem;
+      color: var(--text-dim); line-height: 2.2;
+      letter-spacing: .06em;
     }
 
     @media (max-width: 900px) {
       .page-body { grid-template-columns: 1fr; }
-      .page-main { border-right: none; border-bottom: 1px solid var(--border); }
+      .page-main { border-right: none; border-bottom: 1px solid var(--border); padding-right: 3rem; }
     }
     @media (max-width: 768px) {
       .page-header, .page-main, .page-sidebar { padding-left: 1.5rem; padding-right: 1.5rem; }
@@ -80,15 +80,15 @@
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="index.html">PM</a>
+    <a class="nav-logo" href="index.html">p.m.</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="materie.html">Materie</a></li>
-      <li><a href="passioni.html">Passioni</a></li>
-      <li><a href="edcivica.html" class="active">Ed. Civica</a></li>
-      <li><a href="pcto.html">FSL</a></li>
-      <li><a href="contatti.html">Contatti</a></li>
+      <li><a href="index.html">home</a></li>
+      <li><a href="materie.html">materie</a></li>
+      <li><a href="passioni.html">passioni</a></li>
+      <li><a href="edcivica.html" class="active">ed. civica</a></li>
+      <li><a href="pcto.html">fsl</a></li>
+      <li><a href="contatti.html">contatti</a></li>
     </ul>
   </nav>
 
@@ -100,7 +100,6 @@
 
     <div class="page-body">
       <div class="page-main">
-
         <h3>Propaganda, informazione e pensiero critico</h3>
         <p>La propaganda come strumento di controllo dell'opinione pubblica è nota fin dall'ascesa dei regimi autoritari nel primo Novecento. Veniva usata per accelerare la conquista del potere, giustificare le guerre e garantire la legittimità di chi governava — agendo direttamente sul consenso popolare.</p>
         <p>Una delle tecniche più efficaci era l'individuazione di un nemico comune su cui scaricare il malcontento collettivo. Hitler attribuì agli ebrei la responsabilità delle difficili condizioni economiche e sociali della Germania post-Prima Guerra Mondiale; in Italia il regime fascista usò il concetto di "vittoria mutilata" per alimentare risentimento e giustificare l'entrata in guerra.</p>
@@ -113,40 +112,32 @@
         <h3>La storia che si ripete</h3>
         <p>I meccanismi che hanno portato alle guerre mondiali sembrano ripresentarsi: i conflitti contemporanei erodono le nostre capacità di giudizio critico, alimentano il malcontento e spingono i cittadini disorientati a cercare un capro espiatorio. Questo facilita l'ascesa di governi autoritari che, facendo false promesse, limitano l'accesso alle informazioni e aumentano il controllo sulla vita pubblica.</p>
         <p>Se il cittadino comune non riconosce questi meccanismi ricorrenti, diventa facile preda della manipolazione. È quindi fondamentale promuovere un'educazione critica e mediatica: solo così ognuno può distinguere l'informazione autentica dalla propaganda e partecipare consapevolmente alla vita democratica.</p>
-
       </div>
 
       <div class="page-sidebar">
-        <div class="sidebar-block">
+        <div class="sidebar-section">
           <div class="sidebar-label">Temi esplorati</div>
           <div class="tema-item">
             <div class="tema-item-icon">📢</div>
-            <div>
-              <div class="tema-item-title">Propaganda storica</div>
-              <p class="tema-item-desc">Tecniche dei regimi autoritari del Novecento: nemico comune, vittoria mutilata, controllo del consenso.</p>
-            </div>
+            <div class="tema-item-title">Propaganda storica</div>
+            <p class="tema-item-desc">Tecniche dei regimi autoritari: nemico comune, vittoria mutilata, controllo del consenso.</p>
           </div>
           <div class="tema-item">
             <div class="tema-item-icon">📰</div>
-            <div>
-              <div class="tema-item-title">Disinformazione digitale</div>
-              <p class="tema-item-desc">Fake news, manipolazione dei media e AI come nuovi strumenti di controllo dell'informazione.</p>
-            </div>
+            <div class="tema-item-title">Disinformazione digitale</div>
+            <p class="tema-item-desc">Fake news, media manipolati, intelligenza artificiale come nuovo strumento di controllo.</p>
           </div>
           <div class="tema-item">
             <div class="tema-item-icon">🧠</div>
-            <div>
-              <div class="tema-item-title">Pensiero critico</div>
-              <p class="tema-item-desc">Riconoscere i meccanismi di manipolazione e difendere la propria capacità di giudizio autonomo.</p>
-            </div>
+            <div class="tema-item-title">Pensiero critico</div>
+            <p class="tema-item-desc">Riconoscere i meccanismi di manipolazione. Difendere la propria autonomia di giudizio.</p>
           </div>
         </div>
-
-        <div class="sidebar-block">
-          <div class="sidebar-label">Materia</div>
-          <div style="font-family:var(--font-mono);font-size:.72rem;color:var(--fog-dim);line-height:1.8;">
+        <div class="sidebar-section">
+          <div class="sidebar-label">Riferimento</div>
+          <div class="sidebar-meta">
             Educazione Civica<br>
-            Anno scolastico 2025/2026<br>
+            A.S. 2025/2026<br>
             IIS "Marconi Pieralisi"
           </div>
         </div>

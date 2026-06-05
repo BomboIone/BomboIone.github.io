@@ -7,62 +7,56 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .page-header {
-      padding: 6rem 3rem 3.5rem;
+      padding: 7rem 3rem 4rem;
       border-bottom: 1px solid var(--border);
-      position: relative; overflow: hidden;
+      position: relative; text-align: center;
     }
     .page-header::after {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--neon-dim), transparent);
+      position: absolute; bottom: -1px; left: 15%; right: 15%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--mist-far), transparent);
     }
 
-    .page-inner { padding: 4rem 3rem; max-width: 720px; }
-    .page-inner > p { color: var(--text); font-size: .92rem; margin-bottom: 3rem; line-height: 1.9; }
+    .page-inner { padding: 5rem 3rem; max-width: 680px; }
+    .page-inner > p { color: var(--text); font-size: .98rem; font-style: italic; margin-bottom: 3.5rem; line-height: 2; }
 
-    .contatti-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: var(--border); margin-bottom: 1px;
-    }
+    .contatti-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3.5rem; }
     .contatto-card {
-      background: var(--surface);
+      border: 1px solid var(--border);
       padding: 1.8rem;
-      display: flex; flex-direction: column; gap: .4rem;
-      transition: background .25s, box-shadow .3s;
+      display: flex; flex-direction: column; gap: .5rem;
+      transition: border-color .6s, background .6s;
+      position: relative; overflow: hidden;
     }
-    .contatto-card:hover {
-      background: var(--surface2);
-      box-shadow: inset 0 0 20px var(--neon-glow);
+    .contatto-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(128,144,208,.04) 0%, transparent 70%);
+      opacity: 0; transition: opacity .6s;
     }
-    .contatto-icon { font-size: 1.3rem; margin-bottom: .3rem; }
-    .contatto-key {
-      font-family: var(--font-mono); font-size: .6rem;
-      color: var(--text-dim); letter-spacing: .18em; text-transform: uppercase;
-    }
-    .contatto-val { color: var(--fog); font-size: .88rem; }
-    .contatto-val a { color: var(--neon); text-decoration: none; }
-    .contatto-val a:hover { text-decoration: underline; }
+    .contatto-card:hover { border-color: var(--mist-far); }
+    .contatto-card:hover::before { opacity: 1; }
+    .contatto-icon { font-size: 1.2rem; margin-bottom: .2rem; opacity: .6; }
+    .contatto-key { font-family: var(--font-mono); font-size: .54rem; color: var(--text-dim); letter-spacing: .18em; text-transform: uppercase; }
+    .contatto-val { color: var(--mist-dim); font-size: .9rem; font-style: italic; }
+    .contatto-val a { color: var(--glow); text-decoration: none; transition: color .4s; }
+    .contatto-val a:hover { color: var(--mist); }
 
     .divider {
       width: 100%; height: 1px;
-      background: linear-gradient(90deg, var(--neon-dim), transparent);
-      margin: 3rem 0;
+      background: linear-gradient(90deg, var(--mist-far), transparent);
+      margin-bottom: 3rem; opacity: .3;
     }
 
     .github-cta {
-      display: inline-flex; align-items: center; gap: .8rem;
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 1.2rem 1.8rem; color: var(--fog-dim);
-      text-decoration: none; font-family: var(--font-mono); font-size: .78rem;
-      letter-spacing: .1em;
-      transition: border-color .3s, color .3s, box-shadow .3s;
+      display: inline-flex; align-items: center; gap: .9rem;
+      border: 1px solid var(--border);
+      padding: 1.2rem 2rem; color: var(--mist-far);
+      text-decoration: none; font-family: var(--font-mono); font-size: .64rem;
+      letter-spacing: .12em; transition: border-color .6s, color .6s;
     }
-    .github-cta:hover {
-      border-color: var(--neon-dim);
-      color: var(--neon);
-      box-shadow: 0 0 20px var(--neon-glow);
-    }
-    .github-cta svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+    .github-cta:hover { border-color: var(--mist-far); color: var(--mist-dim); }
+    .github-cta svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
 
     @media (max-width: 768px) {
       .page-header, .page-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
@@ -72,15 +66,15 @@
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="index.html">PM</a>
+    <a class="nav-logo" href="index.html">p.m.</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="materie.html">Materie</a></li>
-      <li><a href="passioni.html">Passioni</a></li>
-      <li><a href="edcivica.html">Ed. Civica</a></li>
-      <li><a href="pcto.html">FSL</a></li>
-      <li><a href="contatti.html" class="active">Contatti</a></li>
+      <li><a href="index.html">home</a></li>
+      <li><a href="materie.html">materie</a></li>
+      <li><a href="passioni.html">passioni</a></li>
+      <li><a href="edcivica.html">ed. civica</a></li>
+      <li><a href="pcto.html">fsl</a></li>
+      <li><a href="contatti.html" class="active">contatti</a></li>
     </ul>
   </nav>
 

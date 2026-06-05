@@ -7,96 +7,90 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .page-header {
-      padding: 6rem 3rem 3.5rem;
+      padding: 7rem 3rem 4rem;
       border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
+      position: relative; text-align: center;
     }
     .page-header::after {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--neon-dim), transparent);
-    }
-    .header-deco {
-      position: absolute; right: 3rem; top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--font-display);
-      font-size: 10rem; font-weight: 800;
-      color: transparent;
-      -webkit-text-stroke: 1px var(--border);
-      pointer-events: none; user-select: none;
-      line-height: 1;
+      position: absolute; bottom: -1px; left: 15%; right: 15%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--mist-far), transparent);
     }
 
-    .materie-body { padding: 3rem; }
+    .materie-body { padding: 5rem 3rem; }
 
     .area-label {
-      font-family: var(--font-mono); font-size: .62rem;
-      color: var(--neon-dim); letter-spacing: .25em;
+      font-family: var(--font-mono); font-size: .56rem;
+      color: var(--mist-far); letter-spacing: .3em;
       text-transform: uppercase;
-      margin-top: 4rem; margin-bottom: 2rem;
-      padding-bottom: .8rem;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 1rem;
+      margin-top: 5rem; margin-bottom: 2.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
     }
-    .area-label::before {
+    .area-label::before, .area-label::after {
       content: '';
-      display: inline-block; width: 6px; height: 6px;
-      background: var(--neon-dim); border-radius: 50%;
-      flex-shrink: 0;
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2));
+    }
+    .area-label::after {
+      background: linear-gradient(90deg, var(--border2), transparent);
     }
     .area-label:first-child { margin-top: 0; }
 
     .materie-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      margin-bottom: 1px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
 
     .materia-card {
-      background: var(--surface);
-      padding: 2rem;
-      transition: background .25s, box-shadow .3s;
-      position: relative;
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 2.2rem;
+      transition: border-color .6s, background .6s;
+      position: relative; overflow: hidden;
     }
-    .materia-card:hover {
-      background: var(--surface2);
-      box-shadow: inset 0 0 30px var(--neon-glow);
+    .materia-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(128,144,208,.04) 0%, transparent 70%);
+      opacity: 0; transition: opacity .6s;
     }
-    .materia-card:hover .materia-num { color: var(--neon); }
+    .materia-card:hover { border-color: var(--mist-far); }
+    .materia-card:hover::before { opacity: 1; }
 
     .materia-num {
-      font-family: var(--font-mono); font-size: .62rem;
-      color: var(--text-dim); margin-bottom: .6rem;
-      letter-spacing: .1em; transition: color .25s;
+      font-family: var(--font-mono); font-size: .56rem;
+      color: var(--text-dim); margin-bottom: .7rem;
+      letter-spacing: .15em;
     }
     .materia-name {
-      font-family: var(--font-display); font-size: 1.2rem;
-      font-weight: 700; color: var(--white); margin-bottom: .8rem;
+      font-family: var(--font-display); font-size: 1.4rem;
+      font-weight: 300; font-style: italic;
+      color: var(--white); margin-bottom: .9rem;
     }
-    .materia-desc { font-size: .83rem; color: var(--text); line-height: 1.7; }
-    .materia-topics { margin-top: 1.2rem; }
+    .materia-desc {
+      font-size: .88rem; color: var(--text);
+      line-height: 1.85; font-style: italic;
+    }
+    .materia-topics { margin-top: 1.3rem; }
 
     @media (max-width: 768px) {
       .page-header, .materie-body { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .header-deco { display: none; }
       .materie-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="index.html">PM</a>
+    <a class="nav-logo" href="index.html">p.m.</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="materie.html" class="active">Materie</a></li>
-      <li><a href="passioni.html">Passioni</a></li>
-      <li><a href="edcivica.html">Ed. Civica</a></li>
-      <li><a href="pcto.html">FSL</a></li>
-      <li><a href="contatti.html">Contatti</a></li>
+      <li><a href="index.html">home</a></li>
+      <li><a href="materie.html" class="active">materie</a></li>
+      <li><a href="passioni.html">passioni</a></li>
+      <li><a href="edcivica.html">ed. civica</a></li>
+      <li><a href="pcto.html">fsl</a></li>
+      <li><a href="contatti.html">contatti</a></li>
     </ul>
   </nav>
 
@@ -104,87 +98,64 @@
     <div class="page-header">
       <div class="section-label">Percorso formativo</div>
       <h1 class="section-title" style="margin-bottom:0">Materie del 5° Anno</h1>
-      <div class="header-deco">5°</div>
     </div>
 
     <div class="materie-body">
-
       <div class="area-label">Area Scientifica / Tecnica</div>
       <div class="materie-grid">
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.05s">
           <div class="materia-num">01</div>
           <div class="materia-name">Informatica</div>
           <p class="materia-desc">La materia di indirizzo principale. Nel quinto anno ho lavorato su applicazioni web full-stack, basi di dati relazionali e un progetto reale con un ente esterno, usando Git e lavorando in team tra frontend e backend.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">Full-stack web</span>
-            <span class="materia-topic">Basi di dati</span>
-            <span class="materia-topic">Git</span>
-            <span class="materia-topic">Team work</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">Full-stack web</span><span class="materia-topic">Basi di dati</span><span class="materia-topic">Git</span><span class="materia-topic">Team work</span></div>
         </div>
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.1s">
           <div class="materia-num">02</div>
           <div class="materia-name">Sistemi e Reti</div>
           <p class="materia-desc">L'infrastruttura del mondo digitale: dalle reti locali a Internet, passando per sicurezza informatica e virtualizzazione.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">Crittografia</span>
-            <span class="materia-topic">Certificati digitali</span>
-            <span class="materia-topic">HTTPS</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">Crittografia</span><span class="materia-topic">Certificati digitali</span><span class="materia-topic">HTTPS</span></div>
         </div>
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.15s">
           <div class="materia-num">03</div>
           <div class="materia-name">TPSIT</div>
           <p class="materia-desc">Tecnologie e Progettazione di Sistemi Informatici e di Telecomunicazione. Programmazione concorrente, sistemi distribuiti e protocolli di rete a livello applicativo.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">Android Studio</span>
-            <span class="materia-topic">Sistemi distribuiti</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">Android Studio</span><span class="materia-topic">Sistemi distribuiti</span></div>
         </div>
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.2s">
           <div class="materia-num">04</div>
           <div class="materia-name">GPOI</div>
           <p class="materia-desc">Gestione Progetto e Organizzazione d'Impresa: come si organizza un progetto reale, si stima il lavoro e si gestisce un team in modo efficiente.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">D.Lgs. 81/08</span>
-            <span class="materia-topic">ISO 9001</span>
-            <span class="materia-topic">Project management</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">D.Lgs. 81/08</span><span class="materia-topic">ISO 9001</span><span class="materia-topic">Project management</span></div>
         </div>
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.25s">
           <div class="materia-num">05</div>
           <div class="materia-name">Matematica</div>
           <p class="materia-desc">Gli strumenti di ragionamento e di calcolo che servono a tutte le discipline tecniche del corso.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">Calcolo combinatorio</span>
-            <span class="materia-topic">Statistica</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">Calcolo combinatorio</span><span class="materia-topic">Statistica</span></div>
         </div>
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.3s">
           <div class="materia-num">06</div>
           <div class="materia-name">Intelligenza Artificiale</div>
           <p class="materia-desc">Materia di curvatura dell'IIS Marconi Pieralisi, che caratterizza in modo unico il nostro percorso rispetto ad altri istituti tecnici.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">Da personalizzare</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">Da personalizzare</span></div>
         </div>
       </div>
 
       <div class="area-label">Area Umanistica</div>
       <div class="materie-grid">
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.35s">
           <div class="materia-num">07</div>
           <div class="materia-name">Italiano</div>
           <p class="materia-desc">Letteratura e scrittura, per imparare a esprimere con chiarezza anche concetti complessi.</p>
           <div class="materia-topics"><span class="materia-topic">Giuseppe Ungaretti</span></div>
         </div>
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.4s">
           <div class="materia-num">08</div>
           <div class="materia-name">Storia</div>
           <p class="materia-desc">I grandi eventi del Novecento e il mondo che hanno contribuito a modellare.</p>
           <div class="materia-topics"><span class="materia-topic">Guerra Fredda</span></div>
         </div>
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.45s">
           <div class="materia-num">09</div>
           <div class="materia-name">Inglese</div>
           <p class="materia-desc">La lingua internazionale dell'informatica e delle telecomunicazioni, fondamentale per il settore.</p>
@@ -194,14 +165,13 @@
 
       <div class="area-label">Altro</div>
       <div class="materie-grid" style="max-width:320px">
-        <div class="materia-card">
+        <div class="materia-card fade-in" style="animation-delay:.5s">
           <div class="materia-num">10</div>
           <div class="materia-name">Scienze Motorie</div>
           <p class="materia-desc">Attività fisica e conoscenza del corpo umano.</p>
           <div class="materia-topics"><span class="materia-topic">Apparato cardiocircolatorio</span></div>
         </div>
       </div>
-
     </div>
 
     <footer>

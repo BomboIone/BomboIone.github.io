@@ -3,304 +3,267 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pietro Morri — Home</title>
+  <title>Pietro Morri</title>
   <link rel="stylesheet" href="style.css">
   <style>
+
     /* ── HERO ── */
     .hero {
-      min-height: calc(100vh - 72px);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 76px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 6rem 3rem 4rem;
+      padding: 6rem 3rem 5rem;
       position: relative;
       overflow: hidden;
-      gap: 4rem;
+      text-align: center;
     }
 
-    /* corridor perspective background */
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(to bottom, transparent 60%, rgba(8,8,16,.9) 100%),
-        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(123,143,255,.06) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(123,143,255,.03) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    /* vanishing point grid floor */
-    .hero-grid {
-      position: absolute; inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .hero-grid svg {
+    /* floating orbs */
+    .hero-orb {
       position: absolute;
-      bottom: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 180%; opacity: .12;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      animation: drift 12s ease-in-out infinite;
+    }
+    .hero-orb-1 {
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(128,144,208,.07) 0%, transparent 70%);
+      top: 10%; left: -10%;
+      animation-delay: 0s; animation-duration: 14s;
+    }
+    .hero-orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(ellipse, rgba(192,168,240,.05) 0%, transparent 70%);
+      bottom: 5%; right: -5%;
+      animation-delay: -6s; animation-duration: 18s;
+    }
+    .hero-orb-3 {
+      width: 300px; height: 500px;
+      background: radial-gradient(ellipse, rgba(128,144,208,.04) 0%, transparent 70%);
+      top: 30%; left: 50%; transform: translateX(-50%);
+      animation-delay: -3s; animation-duration: 22s;
     }
 
-    .hero-left { position: relative; z-index: 1; }
+    /* corridor lines fading into distance */
+    .hero-lines {
+      position: absolute; inset: 0;
+      pointer-events: none; overflow: hidden;
+    }
+    .hero-lines svg {
+      position: absolute; bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100%; height: 70%;
+      opacity: .04;
+    }
 
-    .hero-tag {
+    .hero-eyebrow {
       font-family: var(--font-mono);
-      font-size: .62rem;
-      color: var(--neon-dim);
-      letter-spacing: .22em;
+      font-size: .58rem;
+      color: var(--mist-far);
+      letter-spacing: .35em;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 3.5rem;
       opacity: 0;
-      animation: fadeUp .8s .2s forwards;
+      animation: mistIn 1.2s .1s forwards;
     }
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(4rem, 8vw, 7.5rem);
-      font-weight: 800;
-      line-height: .95;
+      font-size: clamp(5rem, 14vw, 13rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: .9;
       color: var(--white);
-      margin-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
       opacity: 0;
-      animation: fadeUp .8s .35s forwards;
-      animation: fadeUp .8s .35s forwards, flicker 8s 2s infinite;
+      animation: mistIn 1.6s .4s forwards;
+      letter-spacing: -.02em;
     }
-    .hero-title .line2 {
-      color: transparent;
-      -webkit-text-stroke: 1px var(--neon-dim);
+    .hero-title .ghost {
       display: block;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(180,185,220,.15);
+      font-style: normal;
+      font-weight: 600;
+      margin-top: -.1em;
     }
 
     .hero-sub {
-      font-family: var(--font-mono);
-      font-size: .78rem;
-      color: var(--fog-dim);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      margin-bottom: 2.5rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--mist-far);
+      letter-spacing: .1em;
+      margin-bottom: 3.5rem;
       opacity: 0;
-      animation: fadeUp .8s .5s forwards;
-    }
-
-    .hero-desc {
-      font-size: .9rem;
-      color: var(--text);
-      max-width: 420px;
-      margin-bottom: 3rem;
-      line-height: 1.85;
-      opacity: 0;
-      animation: fadeUp .8s .65s forwards;
+      animation: mistIn 1.2s .8s forwards;
     }
 
     .hero-cta {
-      display: flex; gap: 1rem; flex-wrap: wrap;
+      display: flex; gap: 1.2rem; flex-wrap: wrap;
+      justify-content: center;
       opacity: 0;
-      animation: fadeUp .8s .8s forwards;
+      animation: mistIn 1s 1.2s forwards;
     }
 
-    /* right side info panel */
-    .hero-right {
-      position: relative; z-index: 1;
-      display: flex; flex-direction: column; gap: 0;
-      opacity: 0;
-      animation: fadeUp .9s .6s forwards;
+    /* scroll hint */
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono); font-size: .5rem;
+      color: var(--text-dim); letter-spacing: .25em;
+      opacity: 0; animation: mistIn 1s 1.8s forwards;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: .6rem;
     }
-    .hero-right .info-row { padding: 1rem 0; }
-    .hero-right .info-row:first-child { border-top: 1px solid var(--border); }
-
-    /* floating coord */
-    .hero-coord {
-      position: absolute; bottom: 2.5rem; right: 3rem;
-      font-family: var(--font-mono); font-size: .6rem;
-      color: var(--text-dim); letter-spacing: .12em;
-      opacity: 0; animation: fadeUp .8s 1.1s forwards;
-      text-align: right; line-height: 1.8;
+    .hero-scroll::after {
+      content: '';
+      display: block; width: 1px; height: 32px;
+      background: linear-gradient(to bottom, var(--mist-far), transparent);
+      animation: drift 2.5s ease-in-out infinite;
     }
 
     /* ── CHI SONO ── */
     .chi-sono {
-      padding: 8rem 3rem;
+      padding: 10rem 3rem;
       border-top: 1px solid var(--border);
       position: relative;
     }
+
+    /* vignette divider */
     .chi-sono::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--neon-dim), transparent);
+      position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--mist-far), transparent);
+      opacity: .4;
     }
 
     .chi-grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
       align-items: start;
-      max-width: 960px;
+      max-width: 1000px;
     }
     .chi-text p {
       color: var(--text);
-      margin-bottom: 1.3rem;
-      font-size: .92rem;
-      line-height: 1.9;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 2;
+      font-style: italic;
     }
-    .chi-info { display: flex; flex-direction: column; gap: .8rem; }
+    .chi-info { display: flex; flex-direction: column; }
 
-    /* big decorative number */
-    .chi-deco {
+    /* deco number */
+    .section-deco {
       font-family: var(--font-display);
-      font-size: 12rem;
-      font-weight: 800;
+      font-size: 18rem; font-weight: 600;
       color: transparent;
-      -webkit-text-stroke: 1px var(--border2);
-      line-height: 1;
-      margin-bottom: -2rem;
-      pointer-events: none;
-      user-select: none;
+      -webkit-text-stroke: 1px rgba(180,185,220,.04);
+      line-height: 1; pointer-events: none; user-select: none;
+      margin-bottom: -5rem; display: block;
     }
 
     /* ── PASSIONI TEASER ── */
     .passioni-teaser {
-      padding: 8rem 3rem;
+      padding: 10rem 3rem;
       border-top: 1px solid var(--border);
       position: relative;
     }
     .passioni-teaser::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--neon-dim), transparent);
+      position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--mist-far), transparent);
+      opacity: .4;
     }
 
-    .passioni-row {
-      display: flex; gap: 1.5rem; margin: 2.5rem 0;
+    .passioni-pips {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin: 2.5rem 0 3rem;
     }
     .passione-pip {
-      display: flex; align-items: center; gap: .8rem;
-      background: var(--surface);
+      display: flex; align-items: center; gap: .7rem;
       border: 1px solid var(--border);
-      padding: .9rem 1.4rem;
-      font-family: var(--font-mono);
-      font-size: .72rem;
-      color: var(--fog-dim);
-      letter-spacing: .1em;
-      transition: border-color .3s, color .3s, box-shadow .3s;
+      padding: .7rem 1.4rem;
+      font-family: var(--font-mono); font-size: .6rem;
+      color: var(--mist-far); letter-spacing: .12em;
+      transition: border-color .6s, color .6s;
     }
-    .passione-pip:hover {
-      border-color: var(--neon-dim);
-      color: var(--neon);
-      box-shadow: 0 0 16px var(--neon-glow);
-    }
-    .passione-pip span { font-size: 1.2rem; }
+    .passione-pip:hover { border-color: var(--mist-far); color: var(--mist-dim); }
+    .passione-pip span { font-size: 1rem; }
 
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-right { display: none; }
-      .hero-coord { display: none; }
-    }
     @media (max-width: 768px) {
-      .hero, .chi-sono, .passioni-teaser { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero { padding: 5rem 1.5rem 4rem; }
+      .chi-sono, .passioni-teaser { padding: 6rem 1.5rem; }
       .chi-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .chi-deco { font-size: 6rem; }
-      .passioni-row { flex-wrap: wrap; }
+      .section-deco { font-size: 8rem; margin-bottom: -2rem; }
+      .passioni-pips { gap: .7rem; }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="index.html">PM</a>
+    <a class="nav-logo" href="index.html">p.m.</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="materie.html">Materie</a></li>
-      <li><a href="passioni.html">Passioni</a></li>
-      <li><a href="edcivica.html">Ed. Civica</a></li>
-      <li><a href="pcto.html">FSL</a></li>
-      <li><a href="contatti.html">Contatti</a></li>
+      <li><a href="index.html" class="active">home</a></li>
+      <li><a href="materie.html">materie</a></li>
+      <li><a href="passioni.html">passioni</a></li>
+      <li><a href="edcivica.html">ed. civica</a></li>
+      <li><a href="pcto.html">fsl</a></li>
+      <li><a href="contatti.html">contatti</a></li>
     </ul>
   </nav>
 
   <div class="page-content">
 
     <section class="hero">
-      <div class="hero-grid">
-        <svg viewBox="0 0 1000 500" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- perspective grid floor -->
-          <line x1="500" y1="0" x2="0"    y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="100"  y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="200"  y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="300"  y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="400"  y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="500"  y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="600"  y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="700"  y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="800"  y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="900"  y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <line x1="500" y1="0" x2="1000" y2="500" stroke="#7b8fff" stroke-width=".5"/>
-          <!-- horizontal lines converging -->
-          <line x1="0" y1="460" x2="1000" y2="460" stroke="#7b8fff" stroke-width=".4"/>
-          <line x1="100" y1="420" x2="900" y2="420" stroke="#7b8fff" stroke-width=".4"/>
-          <line x1="180" y1="370" x2="820" y2="370" stroke="#7b8fff" stroke-width=".35"/>
-          <line x1="250" y1="310" x2="750" y2="310" stroke="#7b8fff" stroke-width=".3"/>
-          <line x1="320" y1="240" x2="680" y2="240" stroke="#7b8fff" stroke-width=".25"/>
-          <line x1="380" y1="160" x2="620" y2="160" stroke="#7b8fff" stroke-width=".2"/>
-          <line x1="430" y1="80"  x2="570" y2="80"  stroke="#7b8fff" stroke-width=".15"/>
-          <line x1="460" y1="30"  x2="540" y2="30"  stroke="#7b8fff" stroke-width=".1"/>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <div class="hero-lines">
+        <svg viewBox="0 0 1200 600" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="600" y1="0" x2="0"    y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="120"  y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="240"  y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="360"  y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="480"  y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="600"  y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="720"  y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="840"  y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="960"  y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="1080" y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="600" y1="0" x2="1200" y2="600" stroke="#b4b9dc" stroke-width="1"/>
+          <line x1="0"   y1="560" x2="1200" y2="560" stroke="#b4b9dc" stroke-width=".8"/>
+          <line x1="60"  y1="510" x2="1140" y2="510" stroke="#b4b9dc" stroke-width=".7"/>
+          <line x1="140" y1="450" x2="1060" y2="450" stroke="#b4b9dc" stroke-width=".6"/>
+          <line x1="220" y1="380" x2="980"  y2="380" stroke="#b4b9dc" stroke-width=".5"/>
+          <line x1="300" y1="300" x2="900"  y2="300" stroke="#b4b9dc" stroke-width=".45"/>
+          <line x1="370" y1="210" x2="830"  y2="210" stroke="#b4b9dc" stroke-width=".35"/>
+          <line x1="430" y1="130" x2="770"  y2="130" stroke="#b4b9dc" stroke-width=".25"/>
+          <line x1="480" y1="60"  x2="720"  y2="60"  stroke="#b4b9dc" stroke-width=".15"/>
+          <line x1="520" y1="20"  x2="680"  y2="20"  stroke="#b4b9dc" stroke-width=".1"/>
         </svg>
       </div>
 
-      <div class="hero-left">
-        <div class="hero-tag">IIS "Marconi Pieralisi" — Jesi · 2025/2026</div>
-        <h1 class="hero-title">
-          Pietro
-          <span class="line2">Morri</span>
-        </h1>
-        <p class="hero-sub">Studente di Informatica e Telecomunicazioni</p>
-        <p class="hero-desc">Cinque anni di scuola, le cose che mi appassionano, qualche progetto: ecco quello che ho da raccontare.</p>
-        <div class="hero-cta">
-          <a href="#chi-sono" class="btn btn-primary">Scopri di più</a>
-          <a href="materie.html" class="btn btn-outline">Le mie materie</a>
-        </div>
+      <p class="hero-eyebrow">IIS "Marconi Pieralisi" &mdash; Jesi &middot; 2025/2026</p>
+      <h1 class="hero-title">
+        Pietro
+        <span class="ghost">Morri</span>
+      </h1>
+      <p class="hero-sub">Studente di Informatica e Telecomunicazioni</p>
+      <div class="hero-cta">
+        <a href="#chi-sono" class="btn btn-primary">Scopri di più</a>
+        <a href="materie.html" class="btn btn-outline">Le mie materie</a>
       </div>
-
-      <div class="hero-right">
-        <div class="info-row">
-          <span class="info-key">Nome</span>
-          <span class="info-val">Pietro Morri</span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Età</span>
-          <span class="info-val">19 anni</span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Residenza</span>
-          <span class="info-val">Jesi (AN)</span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Scuola</span>
-          <span class="info-val">IIS "Marconi Pieralisi"</span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Indirizzo</span>
-          <span class="info-val">Informatica e Telecomunicazioni</span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Email</span>
-          <span class="info-val"><a href="mailto:morripietro041@gmail.com">morripietro041@gmail.com</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">GitHub</span>
-          <span class="info-val"><a href="https://github.com/BomboIone" target="_blank">github.com/BomboIone</a></span>
-        </div>
-      </div>
-
-      <div class="hero-coord">
-        43°31′N 13°14′E<br>
-        Classe 5ª CM<br>
-        A.S. 2025/2026
-      </div>
+      <div class="hero-scroll">scorrere</div>
     </section>
 
     <section class="chi-sono" id="chi-sono">
-      <div class="chi-deco">01</div>
+      <span class="section-deco">01</span>
       <div class="section-label">Chi sono</div>
       <h2 class="section-title">Un po' di me</h2>
       <div class="chi-grid">
@@ -322,16 +285,16 @@
     </section>
 
     <section class="passioni-teaser" id="passioni">
-      <div class="chi-deco">02</div>
+      <span class="section-deco">02</span>
       <div class="section-label">Quello che mi piace</div>
       <h2 class="section-title">Le mie passioni</h2>
-      <p style="color:var(--text);font-size:.92rem;max-width:480px;line-height:1.9;">Palestra, videogiochi, anime — le tre cose che mi tengono in equilibrio fuori dalla scuola.</p>
-      <div class="passioni-row">
+      <p style="color:var(--text);font-size:1rem;max-width:500px;font-style:italic;line-height:2;">Palestra, videogiochi, anime — le tre cose che mi tengono in equilibrio fuori dalla scuola.</p>
+      <div class="passioni-pips">
         <div class="passione-pip"><span>🏋️</span> Palestra</div>
         <div class="passione-pip"><span>🎮</span> Videogiochi</div>
         <div class="passione-pip"><span>⛩️</span> Anime</div>
       </div>
-      <a href="passioni.html" class="btn btn-outline">Scopri le mie passioni →</a>
+      <a href="passioni.html" class="btn btn-outline">Scopri le mie passioni</a>
     </section>
 
     <footer>
