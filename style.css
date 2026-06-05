@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:ital@0;1&display=swap');
 
 :root {
   --bg:       #060608;
@@ -21,7 +21,7 @@
 
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-mono:    'Space Mono', monospace;
-  --font-body:    'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Crimson Pro', Georgia, serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -168,7 +168,7 @@ nav {
   color: var(--text-dim); letter-spacing: .18em;
   text-transform: uppercase; min-width: 80px; flex-shrink: 0;
 }
-.info-val { color: var(--mist-dim); font-size: 1.15rem; font-style: italic; }
+.info-val { color: var(--mist-dim); font-size: 1.15rem; }
 .info-val a { color: var(--glow); text-decoration: none; transition: color .4s; }
 .info-val a:hover { color: var(--mist); }
 
