@@ -6,51 +6,82 @@
   <title>Pietro Morri — Materie</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .materie-header {
-      padding: 5rem 3rem 3rem;
+    .page-header {
+      padding: 6rem 3rem 3.5rem;
       border-bottom: 1px solid var(--border);
-      background: var(--bg2);
+      position: relative;
+      overflow: hidden;
     }
+    .page-header::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-dim), transparent);
+    }
+    .header-deco {
+      position: absolute; right: 3rem; top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 10rem; font-weight: 800;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--border);
+      pointer-events: none; user-select: none;
+      line-height: 1;
+    }
+
     .materie-body { padding: 3rem; }
 
     .area-label {
-      font-family: var(--font-mono); font-size: .68rem;
-      color: var(--amber); letter-spacing: .2em;
+      font-family: var(--font-mono); font-size: .62rem;
+      color: var(--neon-dim); letter-spacing: .25em;
       text-transform: uppercase;
-      margin-top: 3.5rem; margin-bottom: 2rem;
+      margin-top: 4rem; margin-bottom: 2rem;
       padding-bottom: .8rem;
       border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .area-label::before {
+      content: '';
+      display: inline-block; width: 6px; height: 6px;
+      background: var(--neon-dim); border-radius: 50%;
+      flex-shrink: 0;
     }
     .area-label:first-child { margin-top: 0; }
 
     .materie-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.2rem;
-      margin-bottom: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 1px;
     }
 
     .materia-card {
       background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.8rem;
-      transition: border-color .25s, background .25s, transform .25s;
+      padding: 2rem;
+      transition: background .25s, box-shadow .3s;
+      position: relative;
     }
-    .materia-card:hover { border-color: var(--amber-dim); background: #281a22; transform: translateY(-3px); }
+    .materia-card:hover {
+      background: var(--surface2);
+      box-shadow: inset 0 0 30px var(--neon-glow);
+    }
+    .materia-card:hover .materia-num { color: var(--neon); }
 
     .materia-num {
-      font-family: var(--font-mono); font-size: .68rem;
-      color: var(--text-dim); margin-bottom: .5rem;
+      font-family: var(--font-mono); font-size: .62rem;
+      color: var(--text-dim); margin-bottom: .6rem;
+      letter-spacing: .1em; transition: color .25s;
     }
     .materia-name {
-      font-family: var(--font-display); font-size: 1.25rem;
-      color: var(--white); margin-bottom: .8rem;
+      font-family: var(--font-display); font-size: 1.2rem;
+      font-weight: 700; color: var(--white); margin-bottom: .8rem;
     }
-    .materia-desc { font-size: .85rem; color: var(--text-dim); line-height: 1.6; }
-    .materia-topics { margin-top: 1rem; }
+    .materia-desc { font-size: .83rem; color: var(--text); line-height: 1.7; }
+    .materia-topics { margin-top: 1.2rem; }
 
     @media (max-width: 768px) {
-      .materie-header, .materie-body { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .page-header, .materie-body { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .header-deco { display: none; }
       .materie-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -70,17 +101,16 @@
   </nav>
 
   <div class="page-content">
-
-    <div class="materie-header">
+    <div class="page-header">
       <div class="section-label">Percorso formativo</div>
       <h1 class="section-title" style="margin-bottom:0">Materie del 5° Anno</h1>
+      <div class="header-deco">5°</div>
     </div>
 
     <div class="materie-body">
 
       <div class="area-label">Area Scientifica / Tecnica</div>
       <div class="materie-grid">
-
         <div class="materia-card">
           <div class="materia-num">01</div>
           <div class="materia-name">Informatica</div>
@@ -92,7 +122,6 @@
             <span class="materia-topic">Team work</span>
           </div>
         </div>
-
         <div class="materia-card">
           <div class="materia-num">02</div>
           <div class="materia-name">Sistemi e Reti</div>
@@ -103,7 +132,6 @@
             <span class="materia-topic">HTTPS</span>
           </div>
         </div>
-
         <div class="materia-card">
           <div class="materia-num">03</div>
           <div class="materia-name">TPSIT</div>
@@ -113,7 +141,6 @@
             <span class="materia-topic">Sistemi distribuiti</span>
           </div>
         </div>
-
         <div class="materia-card">
           <div class="materia-num">04</div>
           <div class="materia-name">GPOI</div>
@@ -124,7 +151,6 @@
             <span class="materia-topic">Project management</span>
           </div>
         </div>
-
         <div class="materia-card">
           <div class="materia-num">05</div>
           <div class="materia-name">Matematica</div>
@@ -134,7 +160,6 @@
             <span class="materia-topic">Statistica</span>
           </div>
         </div>
-
         <div class="materia-card">
           <div class="materia-num">06</div>
           <div class="materia-name">Intelligenza Artificiale</div>
@@ -143,61 +168,46 @@
             <span class="materia-topic">Da personalizzare</span>
           </div>
         </div>
-
       </div>
 
       <div class="area-label">Area Umanistica</div>
       <div class="materie-grid">
-
         <div class="materia-card">
           <div class="materia-num">07</div>
           <div class="materia-name">Italiano</div>
           <p class="materia-desc">Letteratura e scrittura, per imparare a esprimere con chiarezza anche concetti complessi.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">Giuseppe Ungaretti</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">Giuseppe Ungaretti</span></div>
         </div>
-
         <div class="materia-card">
           <div class="materia-num">08</div>
           <div class="materia-name">Storia</div>
           <p class="materia-desc">I grandi eventi del Novecento e il mondo che hanno contribuito a modellare.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">Guerra Fredda</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">Guerra Fredda</span></div>
         </div>
-
         <div class="materia-card">
           <div class="materia-num">09</div>
           <div class="materia-name">Inglese</div>
           <p class="materia-desc">La lingua internazionale dell'informatica e delle telecomunicazioni, fondamentale per il settore.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">Da personalizzare</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">Da personalizzare</span></div>
         </div>
-
       </div>
 
       <div class="area-label">Altro</div>
-      <div class="materie-grid" style="max-width: 360px;">
-
+      <div class="materie-grid" style="max-width:320px">
         <div class="materia-card">
           <div class="materia-num">10</div>
           <div class="materia-name">Scienze Motorie</div>
           <p class="materia-desc">Attività fisica e conoscenza del corpo umano.</p>
-          <div class="materia-topics">
-            <span class="materia-topic">Apparato cardiocircolatorio</span>
-          </div>
+          <div class="materia-topics"><span class="materia-topic">Apparato cardiocircolatorio</span></div>
         </div>
-
       </div>
+
     </div>
 
     <footer>
       <span>Pietro Morri · 2025/2026</span>
       <span>IIS "Marconi Pieralisi" — Jesi</span>
     </footer>
-
   </div>
   <script>
     const btn = document.getElementById("hamburger");

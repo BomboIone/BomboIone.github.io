@@ -6,95 +6,83 @@
   <title>Pietro Morri — Passioni</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .passioni-header {
-      padding: 5rem 3rem 3rem;
+    .page-header {
+      padding: 6rem 3rem 3.5rem;
       border-bottom: 1px solid var(--border);
-      background: var(--bg2);
+      position: relative; overflow: hidden;
     }
-
-    .passioni-body {
-      padding: 4rem 3rem;
-      max-width: 960px;
-    }
-
-    /* Card principale grande */
-    .passione-feature {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 0;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      margin-bottom: 1.5rem;
-      transition: border-color .3s, transform .3s;
-      overflow: hidden;
-    }
-    .passione-feature:hover {
-      border-color: var(--amber-dim);
-      transform: translateY(-3px);
-    }
-
-    .passione-feature-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4rem;
-      background: var(--bg3);
-      border-right: 1px solid var(--border);
-      min-height: 180px;
-      position: relative;
-      overflow: hidden;
-    }
-    .passione-feature-icon::after {
+    .page-header::after {
       content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(192,64,96,.07) 0%, transparent 70%);
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--neon-dim), transparent);
     }
 
-    .passione-feature-body {
-      padding: 2rem 2.2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .passioni-body { padding: 0; }
+
+    .passione-block {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      border-bottom: 1px solid var(--border);
+      min-height: 260px;
+      transition: background .3s;
+      position: relative;
     }
-    .passione-feature-num {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      color: var(--text-dim);
-      letter-spacing: .15em;
-      margin-bottom: .5rem;
+    .passione-block:hover { background: var(--surface); }
+    .passione-block:hover .pb-num { color: var(--neon); }
+    .passione-block:hover .pb-side {
+      box-shadow: inset -1px 0 0 var(--neon-dim);
     }
-    .passione-feature-name {
+
+    .pb-side {
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5rem;
+      position: relative;
+      transition: box-shadow .3s;
+    }
+    .pb-num {
       font-family: var(--font-display);
-      font-size: 1.7rem;
-      color: var(--white);
-      margin-bottom: .9rem;
+      font-size: 5rem; font-weight: 800;
+      color: var(--border2);
+      line-height: 1;
+      transition: color .3s;
     }
-    .passione-feature-desc {
-      font-size: .9rem;
-      color: var(--text);
-      line-height: 1.7;
+    .pb-icon { font-size: 2.5rem; }
+
+    .pb-body {
+      padding: 2.5rem 3rem;
+      display: flex; flex-direction: column; justify-content: center;
     }
-    .passione-feature-tags {
-      margin-top: 1.2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
+    .pb-name {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 800;
+      color: var(--white); margin-bottom: 1rem;
     }
-    .passione-tag {
-      display: inline-block;
+    .pb-desc {
+      font-size: .9rem; color: var(--text);
+      line-height: 1.85; max-width: 520px;
+      margin-bottom: 1.5rem;
+    }
+    .pb-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .pb-tag {
       background: var(--bg3);
       border: 1px solid var(--border);
-      color: var(--cream-dim);
+      color: var(--fog-dim);
       font-family: var(--font-mono);
-      font-size: .68rem;
-      padding: .22rem .6rem;
+      font-size: .62rem; padding: .2rem .6rem;
       letter-spacing: .06em;
     }
 
     @media (max-width: 768px) {
-      .passioni-header, .passioni-body { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .passione-feature { grid-template-columns: 1fr; }
-      .passione-feature-icon { min-height: 100px; border-right: none; border-bottom: 1px solid var(--border); }
+      .page-header { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .passione-block { grid-template-columns: 1fr; }
+      .pb-side {
+        border-right: none; border-bottom: 1px solid var(--border);
+        flex-direction: row; align-items: center; padding: 1.5rem;
+        min-height: auto;
+      }
+      .pb-body { padding: 1.5rem; }
     }
   </style>
 </head>
@@ -113,53 +101,46 @@
   </nav>
 
   <div class="page-content">
-
-    <div class="passioni-header">
+    <div class="page-header">
       <div class="section-label">Quello che mi piace</div>
       <h1 class="section-title" style="margin-bottom:0">Le mie passioni</h1>
     </div>
 
     <div class="passioni-body">
 
-      <div class="passione-feature fade-in" style="animation-delay:.1s">
-        <div class="passione-feature-icon">🏋️</div>
-        <div class="passione-feature-body">
-          <div class="passione-feature-num">01</div>
-          <div class="passione-feature-name">Palestra</div>
-          <p class="passione-feature-desc">
-            [Da personalizzare — racconta quando hai iniziato, cosa ti piace allenarsi, obiettivi raggiunti o che stai inseguendo.]
-          </p>
-          <div class="passione-feature-tags">
-            <span class="passione-tag">Da personalizzare</span>
-          </div>
+      <div class="passione-block fade-in" style="animation-delay:.1s">
+        <div class="pb-side">
+          <div class="pb-num">01</div>
+          <div class="pb-icon">🏋️</div>
+        </div>
+        <div class="pb-body">
+          <div class="pb-name">Palestra</div>
+          <p class="pb-desc">[Da personalizzare — racconta quando hai iniziato, cosa ti piace dell'allenarsi, obiettivi raggiunti o che stai inseguendo.]</p>
+          <div class="pb-tags"><span class="pb-tag">Da personalizzare</span></div>
         </div>
       </div>
 
-      <div class="passione-feature fade-in" style="animation-delay:.22s">
-        <div class="passione-feature-icon">🎮</div>
-        <div class="passione-feature-body">
-          <div class="passione-feature-num">02</div>
-          <div class="passione-feature-name">Videogiochi</div>
-          <p class="passione-feature-desc">
-            [Da personalizzare — generi preferiti, titoli che ami, cosa ti ha dato questa passione nel tempo.]
-          </p>
-          <div class="passione-feature-tags">
-            <span class="passione-tag">Da personalizzare</span>
-          </div>
+      <div class="passione-block fade-in" style="animation-delay:.2s">
+        <div class="pb-side">
+          <div class="pb-num">02</div>
+          <div class="pb-icon">🎮</div>
+        </div>
+        <div class="pb-body">
+          <div class="pb-name">Videogiochi</div>
+          <p class="pb-desc">[Da personalizzare — generi preferiti, titoli che ami, cosa ti ha dato questa passione nel tempo.]</p>
+          <div class="pb-tags"><span class="pb-tag">Da personalizzare</span></div>
         </div>
       </div>
 
-      <div class="passione-feature fade-in" style="animation-delay:.34s">
-        <div class="passione-feature-icon">⛩️</div>
-        <div class="passione-feature-body">
-          <div class="passione-feature-num">03</div>
-          <div class="passione-feature-name">Anime</div>
-          <p class="passione-feature-desc">
-            [Da personalizzare — serie preferite, cosa ti affascina di questo medium, un titolo che ti ha colpito.]
-          </p>
-          <div class="passione-feature-tags">
-            <span class="passione-tag">Da personalizzare</span>
-          </div>
+      <div class="passione-block fade-in" style="animation-delay:.3s">
+        <div class="pb-side">
+          <div class="pb-num">03</div>
+          <div class="pb-icon">⛩️</div>
+        </div>
+        <div class="pb-body">
+          <div class="pb-name">Anime</div>
+          <p class="pb-desc">[Da personalizzare — serie preferite, cosa ti affascina di questo medium, un titolo che ti ha colpito.]</p>
+          <div class="pb-tags"><span class="pb-tag">Da personalizzare</span></div>
         </div>
       </div>
 
@@ -170,7 +151,6 @@
       <span>IIS "Marconi Pieralisi" — Jesi</span>
     </footer>
   </div>
-
   <script>
     const btn = document.getElementById("hamburger");
     const menu = document.getElementById("nav-links");
