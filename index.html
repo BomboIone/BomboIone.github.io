@@ -20,7 +20,6 @@
       text-align: center;
     }
 
-    /* floating orbs */
     .hero-orb {
       position: absolute;
       border-radius: 50%;
@@ -47,7 +46,6 @@
       animation-delay: -3s; animation-duration: 22s;
     }
 
-    /* corridor lines fading into distance */
     .hero-lines {
       position: absolute; inset: 0;
       pointer-events: none; overflow: hidden;
@@ -84,10 +82,6 @@
     }
     .hero-title .ghost {
       display: block;
-      
-      
-      
-      
       margin-top: -.1em;
     }
 
@@ -109,7 +103,6 @@
       animation: mistIn 1s 1.2s forwards;
     }
 
-    /* scroll hint */
     .hero-scroll {
       position: absolute; bottom: 2.5rem; left: 50%;
       transform: translateX(-50%);
@@ -132,8 +125,6 @@
       border-top: 1px solid var(--border);
       position: relative;
     }
-
-    /* vignette divider */
     .chi-sono::before {
       content: '';
       position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
@@ -143,14 +134,21 @@
 
     .chi-grid {
       display: grid;
-      grid-template-columns: 280px 1fr 1fr;
+      grid-template-columns: 1fr 1fr 280px;
       gap: 4rem;
       align-items: start;
       max-width: 1100px;
     }
-    .chi-photo {
-      position: relative;
+
+    .chi-text p {
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      line-height: 2;
     }
+    .chi-info { display: flex; flex-direction: column; }
+
+    .chi-photo { position: relative; }
     .chi-photo img {
       width: 100%;
       aspect-ratio: 3/4;
@@ -169,20 +167,10 @@
       background: linear-gradient(to bottom, transparent 50%, rgba(6,6,8,.6) 100%);
       pointer-events: none;
     }
-    .chi-text p {
-      color: var(--text);
-      margin-bottom: 1.5rem;
-      font-size: 1.2rem;
-      line-height: 2;
-      font-style: italic;
-    }
-    .chi-info { display: flex; flex-direction: column; }
 
-    /* deco number */
     .section-deco {
       font-family: var(--font-display);
-      font-size: 18rem; 
-      
+      font-size: 18rem;
       -webkit-text-stroke: 1px rgba(180,185,220,.04);
       line-height: 1; pointer-events: none; user-select: none;
       margin-bottom: -5rem; display: block;
@@ -216,11 +204,14 @@
     .passione-pip:hover { border-color: var(--mist-far); color: var(--mist-dim); }
     .passione-pip span { font-size: 1.2rem; }
 
+    @media (max-width: 900px) {
+      .chi-grid { grid-template-columns: 1fr 1fr; }
+      .chi-photo { display: none; }
+    }
     @media (max-width: 768px) {
       .hero { padding: 5rem 1.5rem 4rem; }
       .chi-sono, .passioni-teaser { padding: 6rem 1.5rem; }
       .chi-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .chi-photo { max-width: 240px; }
       .section-deco { font-size: 8rem; margin-bottom: -2rem; }
       .passioni-pips { gap: .7rem; }
     }
@@ -284,12 +275,10 @@
     </section>
 
     <section class="chi-sono" id="chi-sono">
+      <span class="section-deco">01</span>
       <div class="section-label">Chi sono</div>
       <h2 class="section-title">Un po' di me</h2>
       <div class="chi-grid">
-        <div class="chi-photo">
-          <img src="58f66f77-cf4c-41a2-9fd8-7dfd9f119058.jpg" alt="Pietro Morri">
-        </div>
         <div class="chi-text">
           <p>Ciao, sono Pietro Morri. Frequento il quinto anno dell'IIS Marconi Pieralisi di Jesi nell'indirizzo Informatica e Telecomunicazioni.</p>
           <p>Sono il tipo di persona che deve capire come funziona tutto — non mi basta che qualcosa funzioni, voglio sapere perché. E cerco sempre di portare qualcosa di mio in quello che faccio, invece di fare le cose come le fa chiunque altro.</p>
@@ -303,6 +292,9 @@
           <div class="info-row"><span class="info-key">Indirizzo</span><span class="info-val">Informatica e Telecomunicazioni</span></div>
           <div class="info-row"><span class="info-key">Email</span><span class="info-val"><a href="mailto:morripietro041@gmail.com">morripietro041@gmail.com</a></span></div>
           <div class="info-row"><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/BomboIone" target="_blank">github.com/BomboIone</a></span></div>
+        </div>
+        <div class="chi-photo">
+          <img src="58f66f77-cf4c-41a2-9fd8-7dfd9f119058.jpg" alt="Pietro Morri">
         </div>
       </div>
     </section>
