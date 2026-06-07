@@ -134,9 +134,9 @@
 
     .chi-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 280px;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 4rem;
-      align-items: start;
+      align-items: stretch;
       max-width: 1100px;
     }
 
@@ -148,10 +148,11 @@
     }
     .chi-info { display: flex; flex-direction: column; }
 
-    .chi-photo { position: relative; }
+    .chi-photo { position: relative; align-self: stretch; }
     .chi-photo img {
       width: 100%;
-      aspect-ratio: 3/4;
+      height: 100%;
+      min-height: 420px;
       object-fit: cover;
       object-position: center top;
       filter: grayscale(30%) brightness(.85) contrast(1.05);
