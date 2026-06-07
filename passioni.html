@@ -17,82 +17,145 @@
       background: linear-gradient(90deg, transparent, var(--mist-far), transparent);
     }
 
-    .passioni-body { padding: 0; }
+    /* ── ACCORDION ── */
+    .accordion {
+      border-top: 1px solid var(--border);
+    }
 
-    .passione-block {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
+    .acc-item {
       border-bottom: 1px solid var(--border);
-      min-height: 300px;
-      position: relative;
       overflow: hidden;
-      transition: background .8s;
-    }
-    .passione-block::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 0% 50%, rgba(128,144,208,.04) 0%, transparent 70%);
-      opacity: 0; transition: opacity .8s;
-    }
-    .passione-block:hover { background: rgba(180,185,220,.015); }
-    .passione-block:hover::before { opacity: 1; }
-
-    .pb-left {
-      border-right: 1px solid var(--border);
-      display: flex; flex-direction: column;
-      justify-content: space-between;
-      padding: 3rem;
-    }
-    .pb-num {
-      font-family: var(--font-display);
-      font-size: 7rem; font-weight: 300; font-style: italic;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(180,185,220,.08);
-      line-height: 1;
-    }
-    .pb-icon { font-size: 2rem; opacity: .6; }
-
-    .pb-right {
-      padding: 3.5rem 4rem;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .pb-name {
-      font-family: var(--font-display);
-      font-size: 3rem; font-weight: 300; font-style: italic;
-      color: var(--white); margin-bottom: 1.2rem; letter-spacing: -.01em;
-    }
-    .pb-desc {
-      font-size: 1.15rem; color: var(--text);
-      line-height: 2; max-width: 500px;
-      margin-bottom: 1.8rem;
-    }
-    .pb-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .pb-tag {
-      background: transparent; border: 1px solid var(--border);
-      color: var(--mist-far); font-family: var(--font-mono);
-      font-size: .88rem; padding: .2rem .6rem; letter-spacing: .08em;
     }
 
-    .pb-img {
+    .acc-trigger {
       width: 100%;
-      max-height: 220px;
+      display: grid;
+      grid-template-columns: 80px 1fr 40px;
+      align-items: center;
+      gap: 2rem;
+      padding: 2.2rem 3rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background .4s;
+    }
+    .acc-trigger:hover { background: rgba(180,185,220,.02); }
+    .acc-item.open .acc-trigger { background: rgba(180,185,220,.03); }
+
+    .acc-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem; font-weight: 300; font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(180,185,220,.2);
+      line-height: 1;
+      transition: -webkit-text-stroke-color .4s;
+    }
+    .acc-item.open .acc-num,
+    .acc-trigger:hover .acc-num {
+      -webkit-text-stroke-color: rgba(180,185,220,.5);
+    }
+
+    .acc-title-wrap { display: flex; flex-direction: column; gap: .3rem; }
+    .acc-label {
+      font-family: var(--font-mono);
+      font-size: .62rem; color: var(--mist-far);
+      letter-spacing: .22em; text-transform: uppercase;
+    }
+    .acc-name {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 300; font-style: italic;
+      color: var(--white);
+    }
+    .acc-icon { font-size: 1.5rem; }
+
+    .acc-arrow {
+      width: 20px; height: 20px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--mist-far);
+      transition: transform .5s cubic-bezier(.4,0,.2,1), color .3s;
+      flex-shrink: 0;
+    }
+    .acc-arrow svg { width: 16px; height: 16px; }
+    .acc-item.open .acc-arrow { transform: rotate(45deg); color: var(--mist-dim); }
+
+    /* Panel */
+    .acc-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows .55s cubic-bezier(.4,0,.2,1);
+    }
+    .acc-item.open .acc-panel {
+      grid-template-rows: 1fr;
+    }
+    .acc-panel-inner {
+      overflow: hidden;
+    }
+    .acc-panel-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .acc-desc {
+      padding: 3rem 3rem 3.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .acc-desc p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.95;
+      margin-bottom: 1.5rem;
+    }
+    .acc-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .acc-tag {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--mist-far);
+      font-family: var(--font-mono);
+      font-size: .6rem; padding: .22rem .65rem;
+      letter-spacing: .08em;
+    }
+
+    .acc-img {
+      position: relative; overflow: hidden;
+      min-height: 320px;
+    }
+    .acc-img img {
+      width: 100%; height: 100%;
       object-fit: cover;
       object-position: center;
       display: block;
-      filter: brightness(.75) saturate(.8);
-      transition: filter .6s;
-      border-bottom: 1px solid var(--border);
+      filter: brightness(.75) saturate(.7);
+      transition: filter .8s, transform .8s;
     }
-    .passione-block:hover .pb-img {
-      filter: brightness(.85) saturate(1);
+    .acc-item.open .acc-img img {
+      filter: brightness(.85) saturate(.85);
+    }
+    .acc-img:hover img {
+      filter: brightness(.9) saturate(1);
+      transform: scale(1.02);
+    }
+
+    /* no image placeholder */
+    .acc-img-empty {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 320px;
+      background: var(--surface);
+    }
+    .acc-img-empty span {
+      font-size: 5rem; opacity: .3;
     }
 
     @media (max-width: 768px) {
       .page-header { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .passione-block { grid-template-columns: 1fr; }
-      .pb-left { border-right: none; border-bottom: 1px solid var(--border); padding: 1.5rem; flex-direction: row; align-items: center; min-height: auto; }
-      .pb-num { font-size: 3rem; }
-      .pb-right { padding: 2rem 1.5rem; }
+      .acc-trigger { padding: 1.5rem; grid-template-columns: 50px 1fr 32px; gap: 1rem; }
+      .acc-num { font-size: 2rem; }
+      .acc-name { font-size: 1.4rem; }
+      .acc-panel-content { grid-template-columns: 1fr; }
+      .acc-desc { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+      .acc-img { min-height: 220px; }
     }
   </style>
 </head>
@@ -116,44 +179,113 @@
       <h1 class="section-title" style="margin-bottom:0">Le mie passioni</h1>
     </div>
 
-    <div class="passioni-body">
-      <div class="passione-block fade-in" style="animation-delay:.1s">
-        <div class="pb-left">
-          <div class="pb-num">01</div>
-          <div class="pb-icon">🏋️</div>
-        </div>
-        <div class="pb-right">
-          <div class="pb-name">Palestra</div>
-          <p class="pb-desc">Ho iniziato ad allenarmi quasi due anni fa e da allora è diventata una parte fissa della mia routine. Per me la palestra non è solo un posto dove allenarsi fisicamente — è il luogo dove riesco a dare il massimo e allo stesso tempo a staccare la testa da tutto il resto. Mi impegno al 100% ogni volta che entro, e quando esco mi sento sempre meglio di prima.</p>
-          <div class="pb-tags"><span class="pb-tag">Quasi 2 anni</span><span class="pb-tag">Routine</span><span class="pb-tag">Disciplina</span></div>
+    <div class="accordion">
+
+      <!-- PALESTRA -->
+      <div class="acc-item" id="acc-1">
+        <button class="acc-trigger" onclick="toggle('acc-1')">
+          <div class="acc-num">01</div>
+          <div class="acc-title-wrap">
+            <span class="acc-label">Sport</span>
+            <span class="acc-name">Palestra</span>
+          </div>
+          <div class="acc-icon">🏋️</div>
+          <div class="acc-arrow">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="8" y1="2" x2="8" y2="14" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </div>
+        </button>
+        <div class="acc-panel">
+          <div class="acc-panel-inner">
+            <div class="acc-panel-content">
+              <div class="acc-desc">
+                <p>Ho iniziato ad allenarmi quasi due anni fa e da allora è diventata una parte fissa della mia routine. Per me la palestra non è solo un posto dove allenarsi fisicamente — è il luogo dove riesco a dare il massimo e allo stesso tempo a staccare la testa da tutto il resto. Mi impegno al 100% ogni volta che entro, e quando esco mi sento sempre meglio di prima.</p>
+                <div class="acc-tags">
+                  <span class="acc-tag">Quasi 2 anni</span>
+                  <span class="acc-tag">Routine</span>
+                  <span class="acc-tag">Disciplina</span>
+                </div>
+              </div>
+              <div class="acc-img-empty">
+                <span>🏋️</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="passione-block fade-in" style="animation-delay:.2s">
-        <img class="pb-img" src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg" alt="Apex Legends" onerror="this.style.display=\'none\'">
-        <div class="pb-left">
-          <div class="pb-num">02</div>
-          <div class="pb-icon">🎮</div>
-        </div>
-        <div class="pb-right">
-          <div class="pb-name">Videogiochi</div>
-          <p class="pb-desc">Il mio genere preferito sono gli FPS — c'è qualcosa nell'adrenalina e nella precisione richiesta che mi ha sempre attirato. Il mio gioco preferito è Apex Legends, che ormai gioco da anni. Ma più che il gioco in sé, è la compagnia che lo rende speciale: gioco sempre con i miei amici e quella dimensione social è quello che tiene viva la passione nel tempo.</p>
-          <div class="pb-tags"><span class="pb-tag">FPS</span><span class="pb-tag">Apex Legends</span><span class="pb-tag">Con gli amici</span></div>
+      <!-- VIDEOGIOCHI -->
+      <div class="acc-item" id="acc-2">
+        <button class="acc-trigger" onclick="toggle('acc-2')">
+          <div class="acc-num">02</div>
+          <div class="acc-title-wrap">
+            <span class="acc-label">Gaming</span>
+            <span class="acc-name">Videogiochi</span>
+          </div>
+          <div class="acc-icon">🎮</div>
+          <div class="acc-arrow">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="8" y1="2" x2="8" y2="14" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </div>
+        </button>
+        <div class="acc-panel">
+          <div class="acc-panel-inner">
+            <div class="acc-panel-content">
+              <div class="acc-desc">
+                <p>Il mio genere preferito sono gli FPS — c'è qualcosa nell'adrenalina e nella precisione richiesta che mi ha sempre attirato. Il mio gioco preferito è Apex Legends, che ormai gioco da anni. Ma più che il gioco in sé, è la compagnia che lo rende speciale: gioco sempre con i miei amici e quella dimensione social è quello che tiene viva la passione nel tempo.</p>
+                <div class="acc-tags">
+                  <span class="acc-tag">FPS</span>
+                  <span class="acc-tag">Apex Legends</span>
+                  <span class="acc-tag">Con gli amici</span>
+                </div>
+              </div>
+              <div class="acc-img">
+                <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg" alt="Apex Legends">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="passione-block fade-in" style="animation-delay:.3s">
-        <img class="pb-img" src="https://upload.wikimedia.org/wikipedia/en/5/5b/Berserk_v01_cover.jpg" alt="Berserk" onerror="this.style.display=\'none\'">
-        <div class="pb-left">
-          <div class="pb-num">03</div>
-          <div class="pb-icon">⛩️</div>
-        </div>
-        <div class="pb-right">
-          <div class="pb-name">Anime</div>
-          <p class="pb-desc">La mia serie preferita è Berserk. Quello che mi ha conquistato non è solo la trama, ma la profondità emotiva che riesce a trasmettere — i personaggi sono costruiti in modo che ti entrano dentro davvero. E poi i disegni sono semplicemente magnifici: ogni tavola è curata al dettaglio e riesce a farti immergere completamente nella storia, come se la stessi vivendo.</p>
-          <div class="pb-tags"><span class="pb-tag">Berserk</span><span class="pb-tag">Profondità emotiva</span><span class="pb-tag">Arte</span></div>
+      <!-- ANIME -->
+      <div class="acc-item" id="acc-3">
+        <button class="acc-trigger" onclick="toggle('acc-3')">
+          <div class="acc-num">03</div>
+          <div class="acc-title-wrap">
+            <span class="acc-label">Animazione</span>
+            <span class="acc-name">Anime</span>
+          </div>
+          <div class="acc-icon">⛩️</div>
+          <div class="acc-arrow">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="8" y1="2" x2="8" y2="14" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </div>
+        </button>
+        <div class="acc-panel">
+          <div class="acc-panel-inner">
+            <div class="acc-panel-content">
+              <div class="acc-desc">
+                <p>La mia serie preferita è Berserk. Quello che mi ha conquistato non è solo la trama, ma la profondità emotiva che riesce a trasmettere — i personaggi sono costruiti in modo che ti entrano dentro davvero. E poi i disegni sono semplicemente magnifici: ogni tavola è curata al dettaglio e riesce a farti immergere completamente nella storia, come se la stessi vivendo.</p>
+                <div class="acc-tags">
+                  <span class="acc-tag">Berserk</span>
+                  <span class="acc-tag">Profondità emotiva</span>
+                  <span class="acc-tag">Arte</span>
+                </div>
+              </div>
+              <div class="acc-img">
+                <img src="berserk.png" alt="Berserk">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
 
     <footer>
@@ -161,11 +293,21 @@
       <span>IIS "Marconi Pieralisi" — Jesi</span>
     </footer>
   </div>
+
   <script>
     const btn = document.getElementById("hamburger");
     const menu = document.getElementById("nav-links");
     btn.addEventListener("click", () => { btn.classList.toggle("open"); menu.classList.toggle("open"); });
     menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); menu.classList.remove("open"); }));
+
+    function toggle(id) {
+      const item = document.getElementById(id);
+      const isOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+      // open clicked if it was closed
+      if (!isOpen) item.classList.add('open');
+    }
   </script>
 </body>
 </html>
