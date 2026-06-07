@@ -143,10 +143,31 @@
 
     .chi-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
+      grid-template-columns: 280px 1fr 1fr;
+      gap: 4rem;
       align-items: start;
-      max-width: 1000px;
+      max-width: 1100px;
+    }
+    .chi-photo {
+      position: relative;
+    }
+    .chi-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(30%) brightness(.85) contrast(1.05);
+      transition: filter .8s;
+      display: block;
+    }
+    .chi-photo:hover img {
+      filter: grayscale(0%) brightness(.9) contrast(1.05);
+    }
+    .chi-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(6,6,8,.6) 100%);
+      pointer-events: none;
     }
     .chi-text p {
       color: var(--text);
@@ -198,7 +219,8 @@
     @media (max-width: 768px) {
       .hero { padding: 5rem 1.5rem 4rem; }
       .chi-sono, .passioni-teaser { padding: 6rem 1.5rem; }
-      .chi-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .chi-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .chi-photo { max-width: 240px; }
       .section-deco { font-size: 8rem; margin-bottom: -2rem; }
       .passioni-pips { gap: .7rem; }
     }
@@ -255,17 +277,24 @@
         <span class="ghost">Morri</span>
       </h1>
       <p class="hero-sub">Studente di Informatica e Telecomunicazioni</p>
+      <div class="hero-cta">
+        <a href="materie.html" class="btn btn-outline">Le mie materie</a>
+      </div>
       <div class="hero-scroll">scorrere</div>
     </section>
 
     <section class="chi-sono" id="chi-sono">
+      <span class="section-deco">01</span>
       <div class="section-label">Chi sono</div>
       <h2 class="section-title">Un po' di me</h2>
       <div class="chi-grid">
+        <div class="chi-photo">
+          <img src="58f66f77-cf4c-41a2-9fd8-7dfd9f119058.jpg" alt="Pietro Morri">
+        </div>
         <div class="chi-text">
           <p>Ciao, sono Pietro Morri. Frequento il quinto anno dell'IIS Marconi Pieralisi di Jesi nell'indirizzo Informatica e Telecomunicazioni.</p>
-          <p>Sono il tipo di persona che deve capire come funziona tutto — non mi basta che qualcosa funzioni, voglio sapere perché. E cerco sempre di portare qualcosa di mio in quello che faccio, invece di fare le cose come le fa chiunque altro.</p>
-          <p>Fuori dalla scuola passo il mio tempo in palestra, davanti al mio computer o esco con i miei amici.</p>
+          <p>Mi piace capire come funzionano le cose — che si tratti di un algoritmo, di una rete o di un personaggio di un anime. Sono curioso per natura e tendo a buttarmi a capofitto in quello che mi interessa.</p>
+          <p>Fuori dalla scuola passo il mio tempo in palestra, davanti a qualche videogioco o a guardare anime. Sono le tre cose che mi tengono in equilibrio.</p>
         </div>
         <div class="chi-info">
           <div class="info-row"><span class="info-key">Nome</span><span class="info-val">Pietro Morri</span></div>
@@ -277,6 +306,19 @@
           <div class="info-row"><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/BomboIone" target="_blank">github.com/BomboIone</a></span></div>
         </div>
       </div>
+    </section>
+
+    <section class="passioni-teaser" id="passioni">
+      <span class="section-deco">02</span>
+      <div class="section-label">Quello che mi piace</div>
+      <h2 class="section-title">Le mie passioni</h2>
+      <p style="color:var(--text);font-size:1rem;max-width:500px;font-style:italic;line-height:2;">Palestra, videogiochi, anime — le tre cose che mi tengono in equilibrio fuori dalla scuola.</p>
+      <div class="passioni-pips">
+        <div class="passione-pip"><span>🏋️</span> Palestra</div>
+        <div class="passione-pip"><span>🎮</span> Videogiochi</div>
+        <div class="passione-pip"><span>⛩️</span> Anime</div>
+      </div>
+      <a href="passioni.html" class="btn btn-outline">Scopri le mie passioni</a>
     </section>
 
     <footer>
